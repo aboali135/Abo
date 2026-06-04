@@ -1740,7 +1740,7 @@ function discCard(d, index) {
           return `<div class="stock-badge stock-unavailable">❌ غير متوفر</div>`;
         }
       })()}
-      <button class="copy-btn" onclick="copyCode('${d.code}')">📋 نسخ الرقم</button>
+      <button class="copy-btn" onclick=shareWA('${d.name}','${d.pos}','${d.year}','${d.code}')")"> 📲 واتساب </button>
     </div>`;
 }
 
@@ -1935,6 +1935,7 @@ if ('serviceWorker' in navigator) {
   const swUrl = URL.createObjectURL(blob);
   navigator.serviceWorker.register(swUrl).catch(() => {});
 }
-</script>
+
+function shareWA(name,pos,year,code){const t=(year?name+' '+year:name)+' — '+(pos==='امامي'?'أمامي':'خلفي')+'\nرقم الدسك: '+code;window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank');}</script>
 </body>
 </html>
