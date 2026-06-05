@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>محل ابو علي الكظماوي</title>
+<style>
+/* خط عربي بدون انترنت */
+
+:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --card: #16161f;
+  --border: rgba(255,255,255,0.07);
+  --gold: #f5a623;
+  --gold2: #ffd166;
+  --red: #ff4757;
+  --green: #2ed573;
+  --text: #eaeaea;
+  --muted: #6c7a89;
+  --glow: rgba(245,166,35,0.2);
+  --blue: #3d8bff;
+  --purple: #a855f7;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+
+body {
+  font-family: 'Tajawal', 'Segoe UI', Tahoma, Arial, sans-serif, 'Segoe UI', Tahoma, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ===== PAGES ===== */
+.page { display:none; min-height:100vh; }
+.page.active { display:block; }
+
+/* ===== SEARCH PAGE ===== */
+.search-page {
+  background: var(--bg);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.search-page::before {
+  content: '';
+  position: fixed;
+  top: -200px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.s-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 40px 20px 30px;
+  border-bottom: 1px solid var(--border);
+}
+
+.s-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.s-logo-icon {
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 20px var(--glow);
+}
+
+.s-logo-text {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--gold);
+  letter-spacing: -0.5px;
+}
+
+.s-subtitle {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Search box */
+.search-wrap {
+  position: relative;
+  z-index: 1;
+  padding: 24px 16px 0;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.search-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.search-input {
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 14px 16px;
+  font-family: 'Tajawal', 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  outline: none;
+  transition: all 0.25s;
+  backdrop-filter: blur(10px);
+}
+
+.search-input:focus {
+  border-color: var(--gold);
+  background: rgba(245,166,35,0.04);
+  box-shadow: 0 0 0 3px rgba(245,166,35,0.08);
+}
+
+.search-input::placeholder { color: var(--muted); }
+
+.search-btn {
+  background: linear-gradient(135deg, #f5a623, #ffd166);
+  border: none;
+  border-radius: 16px;
+  padding: 14px 22px;
+  font-family: 'Tajawal', 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(245,166,35,0.35);
+  letter-spacing: 0.3px;
+}
+
+.search-btn:active { transform: scale(0.94); box-shadow: 0 2px 10px rgba(245,166,35,0.2); }
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-family: 'Tajawal', 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.filter-chip.active, .filter-chip:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(245,166,35,0.1);
+  box-shadow: 0 2px 12px rgba(245,166,35,0.15);
+}
+
+/* Results */
+.results-wrap {
+  position: relative;
+  z-index: 1;
+  padding: 20px 16px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.results-label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.no-result {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--muted);
+}
+
+.no-result .no-icon { font-size: 48px; margin-bottom: 10px; }
+.no-result p { font-size: 15px; }
+
+/* Disc card */
+.disc-card {
+  background: linear-gradient(145deg, #1a1a25, #13131c);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  padding: 16px;
+  padding-bottom: 16px;
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+  animation: cardIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.disc-card:active { transform: scale(0.97); box-shadow: 0 2px 10px rgba(0,0,0,0.4); }
+
+@keyframes cardIn {
+  from { opacity:0; transform: translateY(20px) scale(0.95); }
+  to { opacity:1; transform: translateY(0) scale(1); }
+}
+
+@keyframes slideIn {
+  from { opacity:0; transform: translateY(10px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+.disc-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 3px; height: 100%;
+  background: linear-gradient(180deg, #f5a623, #ffd166, #f5a623);
+  border-radius: 0 20px 20px 0;
+}
+
+.disc-card::after {
+  content: '';
+  position: absolute;
+  top: -30px; left: -30px;
+  width: 120px; height: 120px;
+  background: radial-gradient(circle, rgba(245,166,35,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.disc-position {
+  display: inline-block;
+  background: rgba(245,166,35,0.12);
+  border: 1px solid rgba(245,166,35,0.25);
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(245,166,35,0.1);
+}
+
+.disc-position.back {
+  background: rgba(46,213,115,0.1);
+  border-color: rgba(46,213,115,0.25);
+  color: var(--green);
+  box-shadow: 0 2px 8px rgba(46,213,115,0.1);
+}
+
+.disc-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+  padding-left: 12px;
+}
+
+.disc-year-type {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 12px;
+  padding-left: 12px;
+}
+
+.disc-year-type span {
+  background: var(--surface);
+  border-radius: 6px;
+  padding: 2px 8px;
+  margin-left: 4px;
+  font-size: 11px;
+}
+
+.disc-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding-left: 12px;
+}
+
+.disc-detail {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 10px 12px;
+  transition: background 0.2s;
+}
+
+.disc-detail-label {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+
+.disc-detail-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  word-break: break-all;
+}
+
+.disc-detail-value.price { color: var(--gold); font-size: 16px; }
+.disc-detail-value.brand { color: var(--gold2); }
+.stock-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: 20px; font-size: 13px;
+  font-weight: 700; margin-top: 10px; width: 100%;
+  justify-content: center; letter-spacing: 0.5px;
+}
+.stock-available { background: rgba(40,200,100,0.15); color: #28c864; border: 1px solid rgba(40,200,100,0.3); }
+.stock-unavailable { background: rgba(255,60,60,0.15); color: #ff4444; border: 1px solid rgba(255,60,60,0.3); }
+.stock-qty { font-size: 12px; opacity: 0.85; }
+.admin-stock-row { display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap; }
+.stock-toggle { padding:5px 12px; border-radius:12px; border:none; font-size:12px; font-weight:700; cursor:pointer; }
+.stock-toggle.on { background:#28c864; color:#000; }
+.stock-toggle.off { background:#ff4444; color:#fff; }
+.stock-qty-input { width:60px; padding:4px 8px; border-radius:8px; border:1px solid #444; background:#1a1a2e; color:#fff; font-size:13px; text-align:center; }
+
+.copy-btn {
+  background: linear-gradient(135deg, rgba(37,211,102,0.15), rgba(37,211,102,0.08));
+  border: 1px solid rgba(37,211,102,0.25);
+  border-radius: 10px;
+  padding: 9px 14px;
+  font-family: 'Tajawal', 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #25d366;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(37,211,102,0.1);
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+}
+
+.copy-btn:active {
+  background: rgba(37,211,102,0.3);
+  transform: scale(0.97);
+}
+
+/* Bottom nav */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(18,18,26,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  z-index: 100;
+  padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0 -4px 30px rgba(0,0,0,0.3);
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 14px;
+  background: none;
+  border: none;
+  font-family: 'Tajawal', 'Segoe UI', Tahoma, Arial, sans-serif, 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
+}
+
+.nav-btn .nav-icon { font-size: 20px; }
+.nav-btn.active { color: var(--gold); }
+.nav-btn.active .nav-icon {
+  background: rgba(245,166,35,0.12);
+  border-radius: 12px;
+  padding: 4px 10px;
+}
+
+/* spacer */
+.nav-spacer { height: 80px; }
+
+/* ===== ADMIN PAGE ===== */
+.admin-page { background: var(--bg); }
+
+.admin-header {
+  background: linear-gradient(180deg, #16161f, #12121a);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 20px 16px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.admin-title { font-size: 18px; font-weight: 900; }
+.admin-subtitle { font-size: 12px; color: var(--muted); }
+
+.admin-content {
+  padding: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Stats */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.stat-box {
+  background: linear-gradient(145deg, rgba(245,166,35,0.1), rgba(245,166,35,0.03));
+  border: 1px solid rgba(245,166,35,0.15);
+  border-radius: 16px;
+  padding: 16px 10px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.stat-box::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.stat-num { font-size: 26px; font-weight: 900; color: var(--gold); }
+.stat-label { font-size: 11px; color: var(--muted); margin-top: 3px; letter-spacing: 0.5px; }
+
+/* Add form */
+.section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group.full { grid-column: 1/-1; }
+
+.form-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.form-input, .form-select {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-family: 'Tajawal', 'Segoe UI', Tahoma, Arial, sans-serif, 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.form-input:focus, .form-select:focus {
+  border-color: var(--gold);
+}
+
+.form-select option { background: var(--card); }
+
+.add-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  border: none;
+  border-radius: 12px;
+  padding: 13px;
+  font-family: 'Tajawal', 'Segoe UI', Tahoma, Arial, sans-serif, 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 15px var(--glow);
+}
+
+.add-btn:active { transform: scale(0.98); }
+
+/* Admin list */
+.admin-search {
+  width: 100%;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-family: 'Tajawal', 'Segoe UI', Tahoma, Arial, sans-serif, 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  margin-bottom: 12px;
+}
+
+.admin-search:focus { border-color: var(--gold); }
+
+.admin-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: slideIn 0.2s ease;
+}
+
+.admin-item-info { flex: 1; min-width: 0; }
+
+.admin-item-name {
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-item-meta {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.admin-item-code {
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: 700;
+  background: rgba(240,165,0,0.08);
+  padding: 3px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.del-btn {
+  background: rgba(230,57,70,0.1);
+  border: 1px solid rgba(230,57,70,0.2);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  color: var(--red);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.del-btn:active { background: rgba(230,57,70,0.25); }
+
+/* Edit modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 200;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: var(--card);
+  border-radius: 24px 24px 0 0;
+  padding: 24px 16px 40px;
+  width: 100%;
+  max-width: 500px;
+  border-top: 1px solid var(--border);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-close {
+  background: var(--surface);
+  border: none;
+  border-radius: 50%;
+  width: 32px; height: 32px;
+  font-size: 16px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: linear-gradient(135deg, #1a2a1a, #1f2f1f);
+  border: 1px solid rgba(46,213,115,0.3);
+  color: var(--green);
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  z-index: 300;
+  white-space: nowrap;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Splash */
+@keyframes splashPulse {
+  from { box-shadow: 0 0 20px rgba(245,166,35,0.3); transform: scale(1); }
+  to { box-shadow: 0 0 50px rgba(245,166,35,0.6); transform: scale(1.05); }
+}
+.splash-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #f5a623;
+  animation: splashBounce 0.8s ease-in-out infinite alternate;
+}
+@keyframes splashBounce {
+  from { opacity: 0.3; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1.2); }
+}
+
+/* PIN */
+.pin-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.pin-overlay.hidden { display: none; }
+
+.pin-icon { font-size: 52px; margin-bottom: 16px; }
+.pin-title { font-size: 22px; font-weight: 900; margin-bottom: 6px; }
+.pin-sub { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
+
+.pin-dots {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.pin-dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--muted);
+  transition: all 0.2s;
+}
+
+.pin-dot.filled {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.pin-keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 260px;
+  width: 100%;
+}
+
+.pin-key {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  font-family: 'Tajawal', 'Segoe UI', Tahoma, Arial, sans-serif, 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+}
+
+.pin-key:active { background: rgba(240,165,0,0.2); transform: scale(0.94); }
+.pin-key.del { font-size: 18px; color: var(--muted); }
+.pin-key.empty { background: transparent; border: none; cursor: default; }
+
+.pin-error {
+  color: var(--red);
+  font-size: 13px;
+  margin-top: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.pin-error.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- Splash Screen -->
+<div id="splashScreen" style="
+  position:fixed; inset:0; background:#0a0a0f; z-index:9999;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  transition: opacity 0.5s ease;
+">
+  <div style="text-align:center">
+    <div style="
+      width:80px; height:80px; background:linear-gradient(135deg,#f5a623,#ffd166);
+      border-radius:24px; display:flex; align-items:center; justify-content:center;
+      font-size:40px; margin:0 auto 16px; box-shadow:0 0 40px rgba(245,166,35,0.4);
+      animation: splashPulse 1s ease-in-out infinite alternate;
+    ">🔴</div>
+    <div style="font-size:26px; font-weight:900; color:#f5a623; margin-bottom:6px; letter-spacing:-0.5px">محل ابو علي الكظماوي</div>
+    <div style="font-size:13px; color:#6c7a89; margin-bottom:32px">دليل دسكات الفرامل</div>
+    <div style="display:flex; gap:8px; justify-content:center">
+      <div class="splash-dot" style="animation-delay:0s"></div>
+      <div class="splash-dot" style="animation-delay:0.2s"></div>
+      <div class="splash-dot" style="animation-delay:0.4s"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PIN Overlay -->
+<div class="pin-overlay" id="pinOverlay">
+  <div class="pin-icon">🔐</div>
+  <div class="pin-title">لوحة التحكم</div>
+  <div class="pin-sub">أدخل رمز المرور للدخول</div>
+  <div class="pin-dots" id="pinDots">
+    <div class="pin-dot" id="d0"></div>
+    <div class="pin-dot" id="d1"></div>
+    <div class="pin-dot" id="d2"></div>
+    <div class="pin-dot" id="d3"></div>
+  </div>
+  <div class="pin-keypad">
+    <button class="pin-key" onclick="pinPress('1')">1</button>
+    <button class="pin-key" onclick="pinPress('2')">2</button>
+    <button class="pin-key" onclick="pinPress('3')">3</button>
+    <button class="pin-key" onclick="pinPress('4')">4</button>
+    <button class="pin-key" onclick="pinPress('5')">5</button>
+    <button class="pin-key" onclick="pinPress('6')">6</button>
+    <button class="pin-key" onclick="pinPress('7')">7</button>
+    <button class="pin-key" onclick="pinPress('8')">8</button>
+    <button class="pin-key" onclick="pinPress('9')">9</button>
+    <button class="pin-key empty"></button>
+    <button class="pin-key" onclick="pinPress('0')">0</button>
+    <button class="pin-key del" onclick="pinDel()">⌫</button>
+  </div>
+  <div class="pin-error" id="pinError">رمز خاطئ، حاول مجدداً</div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Edit Modal -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal">
+    <div class="modal-title">
+      <span>✏️ تعديل</span>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="form-grid">
+      <div class="form-group full">
+        <label class="form-label">اسم السيارة</label>
+        <input class="form-input" id="editName" placeholder="مثال: كامري">
+      </div>
+      <div class="form-group">
+        <label class="form-label">السنة</label>
+        <input class="form-input" id="editYear" placeholder="2020">
+      </div>
+      <div class="form-group">
+        <label class="form-label">النوع</label>
+        <select class="form-select" id="editImport">
+          <option value="">غير محدد</option>
+          <option value="خليجي">خليجي</option>
+          <option value="أمريكي">أمريكي</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label class="form-label">رقم الدسك</label>
+        <input class="form-input" id="editCode" placeholder="رقم الدسك">
+      </div>
+      <div class="form-group">
+        <label class="form-label">السعر ($)</label>
+        <input class="form-input" id="editPrice" type="number" step="0.5" placeholder="0.000">
+      </div>
+      <div class="form-group">
+        <label class="form-label">الموضع</label>
+        <select class="form-select" id="editPos">
+          <option value="امامي">أمامي</option>
+          <option value="خلفي">خلفي</option>
+        </select>
+      </div>
+    </div>
+    <button class="add-btn" onclick="saveEdit()">💾 حفظ التعديل</button>
+  </div>
+</div>
+
+<!-- SEARCH PAGE -->
+<div class="page active" id="searchPage">
+  <div class="search-page">
+    <div class="s-header">
+      <div class="s-logo">
+        <div class="s-logo-icon">🔴</div>
+        <div class="s-logo-text">محل ابو علي الكظماوي</div>
+      </div>
+      <div class="s-subtitle">دليل دسكات الفرامل</div>
+    </div>
+
+    <!-- Quick Stats Banner -->
+    <div style="padding:12px 16px 0; max-width:500px; margin:0 auto">
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:12px">
+        <div style="background:linear-gradient(135deg,rgba(245,166,35,0.15),rgba(245,166,35,0.05)); border:1px solid rgba(245,166,35,0.2); border-radius:14px; padding:10px; text-align:center">
+          <div style="font-size:18px; font-weight:900; color:#f5a623" id="homeStat1">0</div>
+          <div style="font-size:10px; color:#6c7a89">إجمالي</div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(61,139,255,0.15),rgba(61,139,255,0.05)); border:1px solid rgba(61,139,255,0.2); border-radius:14px; padding:10px; text-align:center">
+          <div style="font-size:18px; font-weight:900; color:#3d8bff" id="homeStat2">0</div>
+          <div style="font-size:10px; color:#6c7a89">متوفر</div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(46,213,115,0.15),rgba(46,213,115,0.05)); border:1px solid rgba(46,213,115,0.2); border-radius:14px; padding:10px; text-align:center">
+          <div style="font-size:18px; font-weight:900; color:#2ed573" id="homeStat3">0</div>
+          <div style="font-size:10px; color:#6c7a89">ماركة</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-wrap">
+      <div class="search-box">
+        <input class="search-input" id="searchInput" placeholder="🔍  ابحث عن اسم السيارة أو رقم الدسك..." oninput="doSearch()">
+        <button class="search-btn" onclick="doSearch()">بحث</button>
+      </div>
+      <div class="filters">
+        <button class="filter-chip active" onclick="setFilter('all', this)">الكل</button>
+        <button class="filter-chip" onclick="setFilter('امامي', this)">أمامي</button>
+        <button class="filter-chip" onclick="setFilter('خلفي', this)">خلفي</button>
+        <button class="filter-chip" onclick="setFilter('خليجي', this)">خليجي</button>
+        <button class="filter-chip" onclick="setFilter('أمريكي', this)">أمريكي</button>
+      </div>
+    </div>
+
+    <div class="results-wrap" id="resultsWrap">
+      <div class="no-result">
+        <div class="no-icon">🔍</div>
+        <p>اكتب اسم السيارة للبحث</p>
+      </div>
+    </div>
+
+    <div class="nav-spacer"></div>
+  </div>
+</div>
+
+<!-- ADMIN PAGE -->
+<div class="page" id="adminPage">
+  <div class="admin-header">
+    <div>
+      <div class="admin-title">⚙️ لوحة التحكم</div>
+      <div class="admin-subtitle">إدارة قاعدة البيانات</div>
+    </div>
+  </div>
+
+  <div class="admin-content">
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-num" id="statTotal">0</div>
+        <div class="stat-label">إجمالي</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" id="statFront">0</div>
+        <div class="stat-label">أمامي</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" id="statBack">0</div>
+        <div class="stat-label">خلفي</div>
+      </div>
+    </div>
+
+    <!-- Add form -->
+    <div class="section-title">➕ إضافة دسك جديد</div>
+    <div class="form-card">
+      <div class="form-grid">
+        <div class="form-group full">
+          <label class="form-label">اسم السيارة *</label>
+          <input class="form-input" id="addName" placeholder="مثال: كامري 2020">
+        </div>
+        <div class="form-group">
+          <label class="form-label">السنة</label>
+          <input class="form-input" id="addYear" placeholder="مثال: 2020">
+        </div>
+        <div class="form-group">
+          <label class="form-label">نوع الاستيراد</label>
+          <select class="form-select" id="addImport">
+            <option value="">غير محدد</option>
+            <option value="خليجي">خليجي</option>
+            <option value="أمريكي">أمريكي</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label class="form-label">رقم الدسك *</label>
+          <input class="form-input" id="addCode" placeholder="رقم الدسك من الكارتون">
+        </div>
+        <div class="form-group">
+          <label class="form-label">السعر ($) *</label>
+          <input class="form-input" id="addPrice" type="number" step="0.5" placeholder="0.000">
+        </div>
+        <div class="form-group">
+          <label class="form-label">الموضع *</label>
+          <select class="form-select" id="addPos">
+            <option value="امامي">أمامي</option>
+            <option value="خلفي">خلفي</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label class="form-label">الماركة</label>
+          <input class="form-input" id="addBrand" value="دوبل لينك" placeholder="الماركة">
+        </div>
+      </div>
+      <button class="add-btn" onclick="addDisc()">➕ إضافة</button>
+    </div>
+
+    <!-- List -->
+    <div class="section-title">📋 قائمة الدسكات</div>
+    <input class="admin-search" id="adminSearch" placeholder="🔍 بحث في القائمة..." oninput="renderAdminList()">
+    <div id="adminList"></div>
+    <div class="nav-spacer"></div>
+  </div>
+</div>
+
+<!-- Bottom Nav -->
+<div class="bottom-nav">
+  <button class="nav-btn active" id="navSearch" onclick="showPage('search')">
+    <span class="nav-icon">🔍</span>
+    <span>بحث</span>
+  </button>
+  <button class="nav-btn" id="navAdmin" onclick="goAdmin()">
+    <span class="nav-icon">⚙️</span>
+    <span>لوحة التحكم</span>
+  </button>
+</div>
+
+<script>
+// ===== DATA =====
+const DEFAULT_DATA = [
+  // ===== من الصورة 6 (القائمة الرئيسية Double Link) =====
+  {id:1,name:"جارجر هيمي",pos:"امامي",year:"",import:"",code:"DL1509/DLINK1509",price:16,brand:"دوبل لينك"},
+  {id:2,name:"لقان 620 + BYD 6",pos:"امامي",year:"",import:"",code:"DL822/DLINK1244",price:8.5,brand:"دوبل لينك"},
+  {id:3,name:"دير + كروسيدا",pos:"امامي",year:"",import:"",code:"DL438/DLINK1121",price:10,brand:"دوبل لينك"},
+  {id:4,name:"كورلا",pos:"امامي",year:"2020",import:"",code:"DL2176/DL-4340",price:10.5,brand:"دوبل لينك"},
+  {id:5,name:"تاهو + يوكن",pos:"امامي",year:"",import:"",code:"DL1092/DLINK1561",price:15.5,brand:"دوبل لينك"},
+  {id:6,name:"تاهو + يوكن",pos:"خلفي",year:"",import:"",code:"DL1194/DL-1563",price:10.25,brand:"دوبل لينك"},
+  {id:7,name:"توسان + سبورتج",pos:"امامي",year:"2018",import:"",code:"DL1847/DLINK-1844",price:12,brand:"دوبل لينك"},
+  {id:8,name:"النترا عام",pos:"خلفي",year:"",import:"",code:"DL1813/DLINK-1851",price:8.25,brand:"دوبل لينك"},
+  {id:9,name:"مستابوشي بيكم قذافي",pos:"امامي",year:"",import:"",code:"DL1519/DLINK-1361",price:11,brand:"دوبل لينك"},
+  {id:10,name:"جراند لاريدو + دورنكو",pos:"امامي",year:"",import:"",code:"DL1455/DLINK-1945",price:15.25,brand:"دوبل لينك"},
+  {id:11,name:"جيب لاريدو + دورنكو",pos:"خلفي",year:"",import:"",code:"DL1498/DLINK-1946",price:9,brand:"دوبل لينك"},
+  {id:12,name:"كيا سورنتو + سنتافي",pos:"امامي",year:"",import:"",code:"DL1202/DLINK-1194",price:12,brand:"دوبل لينك"},
+  {id:13,name:"سورنتو + سنتافي",pos:"خلفي",year:"",import:"",code:"DL1284/DLINK1247",price:8.5,brand:"دوبل لينك"},
+  {id:14,name:"برادو + مرزي دبل اكسل",pos:"امامي",year:"2017",import:"",code:"DL976/DLINK2033",price:12.5,brand:"دوبل لينك"},
+  {id:15,name:"مرزي دبل اكسل",pos:"امامي",year:"2014",import:"",code:"DL1567/DLINK1484",price:12.5,brand:"دوبل لينك"},
+  {id:16,name:"مرزي تك اكسل",pos:"امامي",year:"2017",import:"",code:"DL2058/DLINK4243",price:13,brand:"دوبل لينك"},
+  {id:17,name:"سينا + هايلندر",pos:"امامي",year:"",import:"",code:"DL1324/DLINK2137",price:13.5,brand:"دوبل لينك"},
+  {id:18,name:"سينا + هايلندر حديث",pos:"خلفي",year:"",import:"",code:"DL1391/DLINK1458",price:9,brand:"دوبل لينك"},
+  {id:19,name:"سوناتا + اوبتما",pos:"خلفي",year:"2012",import:"",code:"2TA00/DLINK1397",price:11.5,brand:"دوبل لينك"},
+  {id:20,name:"سوناتا مضلع",pos:"امامي",year:"2011",import:"",code:"DL1447/DLINK1847",price:12,brand:"دوبل لينك"},
+  {id:21,name:"كامري",pos:"خلفي",year:"2018",import:"",code:"DL1879/DLINK4309",price:9,brand:"دوبل لينك"},
+  {id:22,name:"توكسن",pos:"امامي",year:"2015-2012",import:"",code:"DL1803/DLINK1196",price:10.5,brand:"دوبل لينك"},
+  {id:23,name:"سورنتو",pos:"امامي",year:"2016",import:"",code:"DL1962/DLINK1690",price:14,brand:"دوبل لينك"},
+  {id:24,name:"سورنتو",pos:"خلفي",year:"2016",import:"",code:"DL1963/DLINK1691",price:9,brand:"دوبل لينك"},
+  {id:25,name:"النترا",pos:"امامي",year:"2017",import:"",code:"DL1912-1902/DLINK1905",price:11.25,brand:"دوبل لينك"},
+  {id:26,name:"النترا + سوناتا",pos:"امامي",year:"2008",import:"",code:"DL924/DLINK1155",price:9.5,brand:"دوبل لينك"},
+  {id:27,name:"اكسنت + ريو + برايد",pos:"امامي",year:"2008",import:"",code:"DL1156/DLINK1186",price:9.5,brand:"دوبل لينك"},
+  {id:28,name:"النترا عريض",pos:"خلفي",year:"",import:"",code:"DL813/DLINK1117",price:8,brand:"دوبل لينك"},
+  {id:29,name:"سيراتو + توكسن",pos:"خلفي",year:"2012",import:"",code:"DL1856/DLINK1850",price:8,brand:"دوبل لينك"},
+  {id:30,name:"جارجر + اوباما",pos:"امامي",year:"",import:"",code:"DL1056/DLINK1507",price:12,brand:"دوبل لينك"},
+  {id:31,name:"جارجر + اوباما",pos:"خلفي",year:"",import:"",code:"DL1057/DLINK1508",price:9.5,brand:"دوبل لينك"},
+  // ===== من الصورة 4 (القائمة ت 32-64) =====
+  {id:32,name:"موتيكا + لكزز",pos:"امامي",year:"",import:"",code:"DL1303/DLINK1381",price:14.5,brand:"دوبل لينك"},
+  {id:33,name:"موتيكا + لكزز",pos:"خلفي",year:"",import:"",code:"DL1304/DLINK1382",price:9.5,brand:"دوبل لينك"},
+  {id:34,name:"كامري",pos:"امامي",year:"2020-2018",import:"",code:"DL2076/DLINK4275",price:12,brand:"دوبل لينك"},
+  {id:35,name:"كامري",pos:"امامي",year:"2017-2008",import:"",code:"DL1222/DLINK2080",price:11.5,brand:"دوبل لينك"},
+  {id:36,name:"كامري",pos:"خلفي",year:"2017-2008",import:"",code:"DL1212/DLINK2081",price:8.5,brand:"دوبل لينك"},
+  {id:37,name:"كيا حمل 2700",pos:"امامي",year:"",import:"",code:"DL1513/DLINK1056",price:12,brand:"دوبل لينك"},
+  {id:38,name:"نيسان روج",pos:"امامي",year:"",import:"",code:"DL1737/DLINK1715",price:12,brand:"دوبل لينك"},
+  {id:39,name:"نيسان عام",pos:"خلفي",year:"",import:"",code:"DL905/DLINK1250",price:8,brand:"دوبل لينك"},
+  {id:40,name:"كورلا بيكاتشو",pos:"امامي",year:"2019-2008",import:"",code:"DL1210/DLINK2093",price:10,brand:"دوبل لينك"},
+  {id:41,name:"كورلا",pos:"خلفي",year:"2019-2008",import:"",code:"DL1354/DLINK2094",price:8,brand:"دوبل لينك"},
+  {id:42,name:"مرزي تك اكسل",pos:"امامي",year:"2015-2010",import:"",code:"DL1523/DLINK1544",price:10.5,brand:"دوبل لينك"},
+  {id:43,name:"نيسان التما",pos:"امامي",year:"",import:"",code:"DL1650/DLINK1765",price:11.5,brand:"دوبل لينك"},
+  {id:44,name:"اويترا",pos:"امامي",year:"",import:"",code:"DL902/DLINK1077",price:9,brand:"دوبل لينك"},
+  {id:45,name:"افيو",pos:"امامي",year:"",import:"",code:"DL1269/DLINK1158",price:8.5,brand:"دوبل لينك"},
+  {id:46,name:"تييوتا راف 4",pos:"امامي",year:"",import:"",code:"DL1211/DLINK2138",price:12,brand:"دوبل لينك"},
+  {id:47,name:"توكسن",pos:"امامي",year:"2024",import:"",code:"DL2398/DLINK4479",price:15,brand:"دوبل لينك"},
+  {id:48,name:"سيدونا",pos:"امامي",year:"2021",import:"",code:"DL2392/DLINK4500",price:16,brand:"دوبل لينك"},
+  {id:49,name:"كيا حمل + فورتي",pos:"امامي",year:"",import:"",code:"DL1397/DLINK1240",price:11,brand:"دوبل لينك"},
+  {id:50,name:"النترا مضلع",pos:"امامي",year:"",import:"",code:"DL1543/DLINK1399",price:11,brand:"دوبل لينك"},
+  {id:51,name:"نيسان سنترا",pos:"امامي",year:"",import:"",code:"DL815/DLINK1107",price:10.5,brand:"دوبل لينك"},
+  {id:52,name:"ماليبو",pos:"امامي",year:"2018",import:"",code:"DL1913/DLINK1981",price:10.5,brand:"دوبل لينك"},
+  {id:53,name:"تاهو",pos:"امامي",year:"2020",import:"",code:"DL2173/DLINK4506",price:13.5,brand:"دوبل لينك"},
+  {id:54,name:"تاهو",pos:"خلفي",year:"2020",import:"",code:"DL2174/DLINK4395",price:23,brand:"دوبل لينك"},
+  {id:55,name:"نافارا",pos:"امامي",year:"2010",import:"",code:"DL1094/DLINK1460",price:14,brand:"دوبل لينك"},
+  {id:56,name:"نافارا",pos:"امامي",year:"2016",import:"",code:"DL1911/DLINK4080",price:11,brand:"دوبل لينك"},
+  {id:57,name:"بي ام BM",pos:"امامي",year:"",import:"",code:"DL394/DLINK1243",price:10.5,brand:"دوبل لينك"},
+  {id:58,name:"برادو",pos:"خلفي",year:"",import:"",code:"DL606/DLINK2040",price:12,brand:"دوبل لينك"},
+  {id:59,name:"صني هندي",pos:"امامي",year:"",import:"",code:"DL1435/DLINK1564",price:9.5,brand:"دوبل لينك"},
+  {id:60,name:"صني هندي",pos:"امامي",year:"",import:"",code:"DL1273/DLINK1564",price:9.5,brand:"دوبل لينك"},
+  {id:61,name:"دوج كرفان",pos:"امامي",year:"2012",import:"",code:"DL1021/DLINK2185",price:11.5,brand:"دوبل لينك"},
+  {id:62,name:"دوج كرفان",pos:"خلفي",year:"",import:"",code:"DL1589/DLINK4077",price:11.5,brand:"دوبل لينك"},
+  {id:63,name:"دوج كرفان",pos:"امامي",year:"2016",import:"",code:"DL2380/DLINK4323",price:9,brand:"دوبل لينك"},
+  {id:64,name:"سورنتو + سنتافي",pos:"امامي",year:"2024",import:"",code:"DL2400/DLINK4464",price:17,brand:"دوبل لينك"},
+  // ===== من الصورة 5 (القائمة ت 65-73) =====
+  {id:65,name:"توكسن",pos:"امامي",year:"2021",import:"",code:"DL2302/DLINK4334",price:13.5,brand:"دوبل لينك"},
+  {id:66,name:"ستاركس",pos:"امامي",year:"2010",import:"",code:"DL1566/DLINK1238",price:14.5,brand:"دوبل لينك"},
+  {id:67,name:"هايسا اسعاف",pos:"امامي",year:"",import:"",code:"DL1344/DLINK2077",price:11.5,brand:"دوبل لينك"},
+  {id:68,name:"دوج كرفان",pos:"خلفي",year:"2016",import:"",code:"DL1596/DLINK1950",price:11,brand:"دوبل لينك"},
+  {id:69,name:"كيا تيلورايد + بالاسايد",pos:"امامي",year:"",import:"",code:"DL2215/DLINK4327",price:15,brand:"دوبل لينك"},
+  {id:70,name:"كيا تيلورايد + بالاسايد",pos:"خلفي",year:"",import:"",code:"DL2199/DLINK1915",price:11,brand:"دوبل لينك"},
+  {id:71,name:"كريد ويل بوور",pos:"خلفي",year:"",import:"",code:"DL2748/DLINK2748",price:15,brand:"دوبل لينك"},
+  {id:72,name:"بي ام BM",pos:"خلفي",year:"",import:"",code:"DL396/DLINK2167",price:8.5,brand:"دوبل لينك"},
+  {id:73,name:"نيسان صني",pos:"امامي",year:"2009",import:"",code:"DL1193/DLINK1156",price:9,brand:"دوبل لينك"},
+  // ===== النترا 2021 من قائمة الاكسل =====
+  {id:74,name:"النترا",pos:"امامي",year:"2021",import:"",code:"DL2400/DLINK4461",price:13,brand:"دوبل لينك"},
+{id:149,name:"امامي كولف جيتا 1997 + شيري كوين 2009",pos:"امامي",year:"",import:"",code:"1043",price:8.25,brand:"WAK"},
+  {id:150,name:"امامي كيا بستا 2000+1995",pos:"امامي",year:"",import:"",code:"1044",price:8.5,brand:"WAK"},
+  {id:151,name:"خلفي امبالا 2010-2008",pos:"خلفي",year:"",import:"",code:"1046-R",price:8.0,brand:"WAK"},
+  {id:152,name:"امامي هوندا اكسنت شرطه 1994-2006 + كيتس",pos:"امامي",year:"",import:"",code:"1047",price:8.0,brand:"WAK"},
+  {id:153,name:"امامي كالوبر + هوندا قديم 2004+2000",pos:"امامي",year:"",import:"",code:"1048",price:8.25,brand:"WAK"},
+  {id:154,name:"امامي كابيتال و هوندا كونكورد",pos:"امامي",year:"",import:"",code:"1051",price:11.0,brand:"WAK"},
+  {id:155,name:"امامي اوبل فكرتا 1.6 1990-1993",pos:"امامي",year:"",import:"",code:"1055",price:7.25,brand:"WAK"},
+  {id:156,name:"امامي كيا حمل 2700 2007-2017",pos:"امامي",year:"",import:"",code:"1056",price:10.5,brand:"WAK"},
+  {id:157,name:"امامي مازدا + كوستر 8 قطعة + نيسان 2000-2004",pos:"امامي",year:"",import:"",code:"1060FB",price:10.75,brand:"WAK"},
+  {id:158,name:"خلفي النترا + سيراتو + سبكرتا + جاك + بريمرا 1992-1998+1995+2005-2007",pos:"خلفي",year:"",import:"",code:"1062",price:8.25,brand:"WAK"},
+  {id:159,name:"امامي ميتسوبيشي سيكما 1991+1997",pos:"امامي",year:"",import:"",code:"1068",price:11.0,brand:"WAK"},
+  {id:160,name:"امامي هوندا اكورد 1992-1998 + دايو + ايسوزو + روفر",pos:"امامي",year:"",import:"",code:"1076-F",price:11.25,brand:"WAK"},
+  {id:161,name:"امامي اوبترا 2006-2014",pos:"امامي",year:"",import:"",code:"1077",price:8.5,brand:"WAK"},
+  {id:162,name:"امامي اوبل اوميكا 1989-1995",pos:"امامي",year:"",import:"",code:"1078",price:9.25,brand:"WAK"},
+  {id:163,name:"امامي افيو QQ 2015 - دايو سيلو + شيري",pos:"امامي",year:"",import:"",code:"1086",price:8.75,brand:"WAK"},
+  {id:164,name:"امامي نيسان بيك 1988",pos:"امامي",year:"",import:"",code:"1095",price:10.0,brand:"WAK"},
+  {id:165,name:"امامي ستاريكس H200+2003 دسك + امامي كروال",pos:"امامي",year:"",import:"",code:"1099",price:12.0,brand:"WAK"},
+  {id:166,name:"خلفي كرولا 1990+1995",pos:"خلفي",year:"",import:"",code:"1105",price:8.75,brand:"WAK"},
+  {id:167,name:"امامي سنترا + فيرسا + التيما + ماكزيما + الميا 2006-2014",pos:"امامي",year:"",import:"",code:"1107-F",price:10.5,brand:"WAK"},
+  {id:168,name:"امامي كرونا نفخ + تويوتا مارك نفخ + كرستا امريكي 2007",pos:"امامي",year:"",import:"",code:"1110",price:10.0,brand:"WAK"},
+  {id:169,name:"امامي مازدا فاصوليا 1991-1996",pos:"امامي",year:"",import:"",code:"1113",price:8.5,brand:"WAK"},
+  {id:170,name:"خلفي لكزا 1997-2004 + دايو نوبرا",pos:"خلفي",year:"",import:"",code:"1114",price:9.25,brand:"WAK"},
+  {id:171,name:"امامي سورنتو 2008 + ستاريكس + هوندا تريكا",pos:"امامي",year:"",import:"",code:"1115",price:11.25,brand:"WAK"},
+  {id:172,name:"امامي كيا حمل 3000 2007+2024",pos:"امامي",year:"",import:"",code:"1116",price:11.25,brand:"WAK"},
+  {id:173,name:"خلفي النترا + توكسون 2007-2011",pos:"خلفي",year:"",import:"",code:"1117",price:8.0,brand:"WAK"},
+  {id:174,name:"امامي دير 2005+2012",pos:"امامي",year:"",import:"",code:"1121",price:9.0,brand:"WAK"},
+  {id:175,name:"خلفي سوبر سيدان 1988-2001+2005 + تويوتا كريسيدا",pos:"خلفي",year:"",import:"",code:"1123",price:8.5,brand:"WAK"},
+  {id:176,name:"امامي لاند 1991+1995",pos:"امامي",year:"",import:"",code:"1134",price:8.25,brand:"WAK"},
+  {id:177,name:"امامي متسوبوشي باص 1991-1998",pos:"امامي",year:"",import:"",code:"1135",price:10.5,brand:"WAK"},
+  {id:178,name:"امامي راس نور + ارنب + تويوتا سليكا 1996-1999",pos:"امامي",year:"",import:"",code:"1138",price:10.0,brand:"WAK"},
+  {id:179,name:"موديل 2001+2005 4x4 هايس + هايلوكس 95 + هايلوكس",pos:"امامي",year:"",import:"",code:"1139",price:9.5,brand:"WAK"},
+  {id:180,name:"امامي نيسان بيك اب 2016+2000",pos:"امامي",year:"",import:"",code:"1140",price:10.75,brand:"WAK"},
+  {id:181,name:"امامي لانسر 1991-2002+2004",pos:"امامي",year:"",import:"",code:"1142",price:8.25,brand:"WAK"},
+  {id:182,name:"امامي كيا حمل 4000 2007+2024",pos:"امامي",year:"",import:"",code:"1148",price:15.75,brand:"WAK"},
+  {id:183,name:"امامي النترا + سيكترا 2002-2005",pos:"امامي",year:"",import:"",code:"1152",price:10.25,brand:"WAK"},
+  {id:184,name:"امامي سورنتوكندي + سنتافي 2000-2006",pos:"امامي",year:"",import:"",code:"1153",price:12.25,brand:"WAK"},
+  {id:185,name:"خلفي سورنتو 2000-2006",pos:"خلفي",year:"",import:"",code:"1154",price:9.5,brand:"WAK"},
+  {id:186,name:"امامي النترا + توكسون 2010 + امبالا 2014-2017",pos:"امامي",year:"",import:"",code:"1155",price:9.75,brand:"WAK"},
+  {id:187,name:"امامي نيسان سني 2001-2012",pos:"امامي",year:"",import:"",code:"1156",price:9.0,brand:"WAK"},
+  {id:188,name:"امامي سورنتو 2008 + ستاريكس + هوندا تريكان 2000-2006",pos:"امامي",year:"",import:"",code:"1157",price:11.25,brand:"WAK"},
+  {id:189,name:"امامي افيو 2005-2012",pos:"امامي",year:"",import:"",code:"1158",price:9.0,brand:"WAK"},
+  {id:190,name:"خلفي اوبرتا 2004-2005",pos:"خلفي",year:"",import:"",code:"1160",price:8.0,brand:"WAK"},
+  {id:191,name:"امامي سيراتو 2008-2013",pos:"امامي",year:"",import:"",code:"1162",price:9.5,brand:"WAK"},
+  {id:192,name:"خلفي نيسان ماكسيما 1995 + مازدا زووم 6 + انفيني",pos:"خلفي",year:"",import:"",code:"1163",price:7.5,brand:"WAK"},
+  {id:193,name:"امامي طيبة + كيا ريو 2002+2005",pos:"امامي",year:"",import:"",code:"1164",price:9.75,brand:"WAK"},
+  {id:194,name:"امامي سبكترا 2002-2008",pos:"امامي",year:"",import:"",code:"1167",price:11.25,brand:"WAK"},
+  {id:195,name:"امامي كيا حمل 3000 2010-2021",pos:"امامي",year:"",import:"",code:"1174A",price:11.0,brand:"WAK"},
+  {id:196,name:"بنكو 3 محرك 3000 + كيا حمل 3000 2007+2024",pos:"امامي",year:"",import:"",code:"1175",price:11.0,brand:"WAK"},
+  {id:197,name:"امامي بريحو 1995-1999",pos:"امامي",year:"",import:"",code:"1176",price:10.5,brand:"WAK"},
+  {id:198,name:"خلفي ستاريكس + سنتاق 2007-2011",pos:"خلفي",year:"",import:"",code:"1178",price:8.5,brand:"WAK"},
+  {id:199,name:"امامي بيجو 206 + 306 فرنسي",pos:"امامي",year:"",import:"",code:"1179",price:9.5,brand:"WAK"},
+  {id:200,name:"امامي سمند 2009 حساس + بيجو 405 1989",pos:"امامي",year:"",import:"",code:"1180",price:8.0,brand:"WAK"},
+  {id:201,name:"خلفي نيسان التيماحديث 2007+2018",pos:"خلفي",year:"",import:"",code:"1184",price:8.5,brand:"WAK"},
+  {id:202,name:"امامي اكسنت + ريو 2007-2011",pos:"امامي",year:"",import:"",code:"1186",price:9.25,brand:"WAK"},
+  {id:203,name:"خلفي توكسون + سبورتاج 2012",pos:"خلفي",year:"",import:"",code:"1187",price:8.25,brand:"WAK"},
+  {id:204,name:"خلفي سنتاق 2007-2020 + سورنتو",pos:"خلفي",year:"",import:"",code:"1192",price:9.0,brand:"WAK"},
+  {id:205,name:"امامي سنتاق 2005+2007 + كيا سوريتو",pos:"امامي",year:"",import:"",code:"1194",price:11.5,brand:"WAK"},
+  {id:206,name:"امامي توكسون + سبورتاج 2012-2016",pos:"امامي",year:"",import:"",code:"1196",price:10.5,brand:"WAK"},
+  {id:207,name:"امامي فيات غراندي بونتو 2007-2014 امريكا اللاتينية",pos:"امامي",year:"",import:"",code:"1201",price:11.0,brand:"WAK"},
+  {id:208,name:"امامي هيونداي فيراكروز 2007-2012",pos:"امامي",year:"",import:"",code:"1203",price:12.0,brand:"WAK"},
+  {id:209,name:"امامي شوفرليت ايكيونكس 2006-2012",pos:"امامي",year:"",import:"",code:"1204",price:12.25,brand:"WAK"},
+  {id:210,name:"خلفي شوفرليت ايكيونكس 2006-2012",pos:"خلفي",year:"",import:"",code:"1205",price:9.5,brand:"WAK"},
+  {id:211,name:"خلفي كامري 1998-2002",pos:"خلفي",year:"",import:"",code:"1208",price:8.0,brand:"WAK"},
+  {id:212,name:"امامي اوبل فكترا + جاكوار + مرزي دبل X300 XJ 1993-2003 1996-2003",pos:"امامي",year:"",import:"",code:"1220",price:9.0,brand:"WAK"},
+  {id:213,name:"امامي لاندكروز 99-2007 + مرزي دبل + فورند + ميكزمين + روتا",pos:"امامي",year:"",import:"",code:"1222",price:11.25,brand:"WAK"},
+  {id:214,name:"امامي افلون حديث + ماليبو حديث + كرستا امريكي",pos:"امامي",year:"",import:"",code:"1226",price:9.75,brand:"WAK"},
+  {id:215,name:"امامي مازدا + كروال + ابصم ايكوا",pos:"امامي",year:"",import:"",code:"1227",price:8.0,brand:"WAK"},
+  {id:216,name:"خلفي ايكوا + ابصم خليجي",pos:"خلفي",year:"",import:"",code:"1230",price:8.25,brand:"WAK"},
+  {id:217,name:"امامي كيا صباركستا",pos:"امامي",year:"",import:"",code:"1235",price:12.0,brand:"WAK"},
+  {id:218,name:"خلفي كامري خليجي 2011-2016",pos:"خلفي",year:"",import:"",code:"1236",price:9.75,brand:"WAK"},
+  {id:219,name:"امامي كيا ياص ستاريكس 2008-2016",pos:"امامي",year:"",import:"",code:"1238",price:13.0,brand:"WAK"},
+  {id:220,name:"خلفي سوناتا 2009 فما فوق",pos:"خلفي",year:"",import:"",code:"1239",price:8.25,brand:"WAK"},
+  {id:221,name:"امامي سيراتو 2008-2013",pos:"امامي",year:"",import:"",code:"1240",price:9.5,brand:"WAK"},
+  {id:222,name:"امامي BYD 2008-2011 دسك + كيا كرولا 2005",pos:"امامي",year:"",import:"",code:"1244",price:9.0,brand:"WAK"},
+  {id:223,name:"امامي مارسديس باص فان 2002",pos:"امامي",year:"",import:"",code:"1245",price:12.5,brand:"WAK"},
+  {id:224,name:"خلفي سنتاق + سوريتو 2011-2014",pos:"خلفي",year:"",import:"",code:"1247",price:8.5,brand:"WAK"},
+  {id:225,name:"امامي موهاق 2009+2011",pos:"امامي",year:"",import:"",code:"1248",price:11.75,brand:"WAK"},
+  {id:226,name:"امامي نيسان انفني 2000+2005 + باسفاندر 2000-2013",pos:"امامي",year:"",import:"",code:"1249",price:12.25,brand:"WAK"},
+  {id:227,name:"خلفي شوفرليت امبالا + ابيكا 2007-2008 + ابيكا",pos:"خلفي",year:"",import:"",code:"1252",price:10.25,brand:"WAK"},
+  {id:228,name:"امامي لانسر 2008+2012",pos:"امامي",year:"",import:"",code:"1255",price:9.25,brand:"WAK"},
+  {id:229,name:"امامي مسيوبش 2001-2006",pos:"امامي",year:"",import:"",code:"1256",price:10.5,brand:"WAK"},
+  {id:230,name:"خلفي اوبترا 2007-2014",pos:"خلفي",year:"",import:"",code:"1257",price:8.25,brand:"WAK"},
+  {id:231,name:"امامي فورد فوكس + ايسكيب 2009+2021",pos:"امامي",year:"",import:"",code:"1260",price:12.5,brand:"WAK"},
+  {id:232,name:"امامي تويوتا مارك 1995-1998",pos:"امامي",year:"",import:"",code:"1270",price:9.5,brand:"WAK"},
+  {id:233,name:"امامي ملكه 1999-2004",pos:"امامي",year:"",import:"",code:"1272",price:10.25,brand:"WAK"},
+  {id:234,name:"امامي مرزيه تك اكسل 2007-2008",pos:"امامي",year:"",import:"",code:"1276",price:10.5,brand:"WAK"},
+  {id:235,name:"امامي لانسر فرش 2008-2014 + جيب باتريوت + نترو + جيب تريلبلازر",pos:"امامي",year:"",import:"",code:"1360",price:11.25,brand:"WAK"},
+  {id:236,name:"امامي مسيوبيشي قذاق 2007+2019",pos:"امامي",year:"",import:"",code:"1361",price:11.5,brand:"WAK"},
+  {id:237,name:"امامي كروز 2008-2015 + تراكس 2017 + سبارك",pos:"امامي",year:"",import:"",code:"1362",price:11.75,brand:"WAK"},
+  {id:238,name:"امامي كروز + تراكس 2008-2015",pos:"امامي",year:"",import:"",code:"1363",price:9.5,brand:"WAK"},
+  {id:239,name:"خلفي كامري 2002 + افلون 2012",pos:"خلفي",year:"",import:"",code:"1364",price:8.25,brand:"WAK"},
+  {id:240,name:"امامي نيسان بانفندر 2008-2010 + اكسترا",pos:"امامي",year:"",import:"",code:"1365",price:11.75,brand:"WAK"},
+  {id:241,name:"خلفي امبالا 2007-2011",pos:"خلفي",year:"",import:"",code:"1366",price:8.25,brand:"WAK"},
+  {id:242,name:"هوندا اكورد + اسوزو + H6 دسك + خلفي هفال 2016",pos:"امامي",year:"",import:"",code:"1368",price:8.5,brand:"WAK"},
+  {id:243,name:"خلفي تاهو كاديلاك + شوفرليت 2007-2000",pos:"خلفي",year:"",import:"",code:"1370",price:11.5,brand:"WAK"},
+  {id:244,name:"امامي تيوتا كامري 1996+2001",pos:"امامي",year:"",import:"",code:"1372",price:10.5,brand:"WAK"},
+  {id:245,name:"امامي كرولا 2004-2007 امريكي نحلة",pos:"امامي",year:"",import:"",code:"1373",price:10.25,brand:"WAK"},
+  {id:246,name:"امامي سوناتا كوري 2011-2014",pos:"امامي",year:"",import:"",code:"1374",price:10.0,brand:"WAK"},
+  {id:247,name:"امامي مرزيه دبل اكسل 2007",pos:"امامي",year:"",import:"",code:"1375",price:10.75,brand:"WAK"},
+  {id:248,name:"امامي هايس باص 1995+2012",pos:"امامي",year:"",import:"",code:"1376",price:10.0,brand:"WAK"},
+  {id:249,name:"امامي پارس 2007-2010",pos:"امامي",year:"",import:"",code:"1377",price:9.0,brand:"WAK"},
+  {id:250,name:"امامي مونيكا 2001-2006",pos:"امامي",year:"",import:"",code:"1379",price:11.5,brand:"WAK"},
+  {id:251,name:"خلفي مونيكا 2001-2007",pos:"خلفي",year:"",import:"",code:"1380",price:9.5,brand:"WAK"},
+  {id:252,name:"امامي لاندكروز 2008-2019",pos:"امامي",year:"",import:"",code:"1381",price:12.75,brand:"WAK"},
+  {id:253,name:"خلفي وه نه وشه 2008-2019",pos:"خلفي",year:"",import:"",code:"1382",price:10.25,brand:"WAK"},
+  {id:254,name:"امامي نيسان تيدا 2008+2012",pos:"امامي",year:"",import:"",code:"1383",price:9.5,brand:"WAK"},
+  {id:255,name:"امامي BMW 1989+1995",pos:"امامي",year:"",import:"",code:"1389",price:11.75,brand:"WAK"},
+  {id:256,name:"امامي رينو سافوران + رينو كالوس 2005+2009",pos:"امامي",year:"",import:"",code:"1390",price:12.25,brand:"WAK"},
+  {id:257,name:"خلفي رينولت ميكان 2001-2011",pos:"خلفي",year:"",import:"",code:"1391",price:8.75,brand:"WAK"},
+  {id:258,name:"امامي شوفرليت + دايو + تويوتا اسريو + اسيرو",pos:"امامي",year:"",import:"",code:"1392",price:10.0,brand:"WAK"},
+  {id:259,name:"امامي اوبتيما ويل رفيع + ازيرا",pos:"امامي",year:"",import:"",code:"1396",price:10.5,brand:"WAK"},
+  {id:260,name:"امامي كيا اوبتيما ويل + محرك + كيا",pos:"امامي",year:"",import:"",code:"1397",price:10.25,brand:"WAK"},
+  {id:261,name:"امامي النترا + اكسنت مضلع",pos:"امامي",year:"",import:"",code:"1398",price:10.5,brand:"WAK"},
+  {id:262,name:"امامي النترا مثقب",pos:"امامي",year:"",import:"",code:"1399A",price:10.0,brand:"WAK"},
+  {id:263,name:"امامي اوبتما + ازيرا ويل",pos:"امامي",year:"",import:"",code:"1400",price:10.0,brand:"WAK"},
+  {id:264,name:"امامي كيا بيكانتو",pos:"امامي",year:"",import:"",code:"1403",price:11.0,brand:"WAK"},
+  {id:265,name:"خلفي كيا بيكانتو",pos:"خلفي",year:"",import:"",code:"1405",price:9.75,brand:"WAK"},
+  {id:266,name:"امامي كولورادو + كريت - بيك اب ديرد حديث",pos:"امامي",year:"",import:"",code:"1406",price:9.0,brand:"WAK"},
+  {id:267,name:"امامي كولوراد + ايسوزو + تراي + بلايزر",pos:"امامي",year:"",import:"",code:"1408",price:12.0,brand:"WAK"},
+  {id:268,name:"امامي كولوراد + تاكوما تويوتا",pos:"امامي",year:"",import:"",code:"1409",price:12.0,brand:"WAK"},
+  {id:269,name:"امامي انوفا 7 راكب تويوتا 2015-2020",pos:"امامي",year:"",import:"",code:"1412",price:10.25,brand:"WAK"},
+  {id:270,name:"امامي سوزوكي 2005-2010",pos:"امامي",year:"",import:"",code:"1416",price:10.25,brand:"WAK"},
+  {id:271,name:"امامي سوبر 1985-1990",pos:"امامي",year:"",import:"",code:"1421",price:8.5,brand:"WAK"},
+  {id:272,name:"امامي سنتاق و سورينتو وارداميريكي 2006+2018",pos:"امامي",year:"",import:"",code:"1424",price:11.25,brand:"WAK"},
+  {id:273,name:"خلفي راس ثور + ارنب 1996-2001",pos:"خلفي",year:"",import:"",code:"1432",price:8.5,brand:"WAK"},
+  {id:274,name:"خلفي ماليبو + امبالا 2010",pos:"خلفي",year:"",import:"",code:"1442",price:8.75,brand:"WAK"},
+  {id:275,name:"امامي ماليبو + امبالا 2010-2015",pos:"امامي",year:"",import:"",code:"1443",price:12.0,brand:"WAK"},
+  {id:276,name:"امامي نيسان اورفان باص 2007+2011",pos:"امامي",year:"",import:"",code:"1447",price:11.75,brand:"WAK"},
+  {id:277,name:"امامي نيسان ارمادة 2011-2023",pos:"امامي",year:"",import:"",code:"1448",price:14.5,brand:"WAK"},
+  {id:278,name:"امامي كامري 91-90 + كوستر 1980-1995",pos:"امامي",year:"",import:"",code:"1450",price:9.75,brand:"WAK"},
+  {id:279,name:"امامي نيسان + التيما + جوكي + كيكس + شقشقان",pos:"امامي",year:"",import:"",code:"1451",price:11.75,brand:"WAK"},
+  {id:280,name:"ترافيرس GMC-2024-2018 اكاديا XT5,6 + كاديلاك",pos:"امامي",year:"",import:"",code:"1452A",price:14.5,brand:"WAK"},
+  {id:281,name:"امامي 2018-2022",pos:"امامي",year:"",import:"",code:"1455",price:12.25,brand:"WAK"},
+  {id:282,name:"خلفي راف فرو 2005-2010",pos:"خلفي",year:"",import:"",code:"1457",price:8.75,brand:"WAK"},
+  {id:283,name:"خلفي تويوتا افيزا + سينا 2010+2012",pos:"خلفي",year:"",import:"",code:"1458",price:9.5,brand:"WAK"},
+  {id:284,name:"امامي نافارا 2008-2015",pos:"امامي",year:"",import:"",code:"1460",price:11.75,brand:"WAK"},
+  {id:285,name:"امامي انفيني جي 37 جوري باك 2009-2010",pos:"امامي",year:"",import:"",code:"1471",price:13.5,brand:"WAK"},
+  {id:286,name:"خلفي انفيني جي 37 جوري باك 2009-2010",pos:"خلفي",year:"",import:"",code:"1472",price:10.0,brand:"WAK"},
+  {id:287,name:"خلفي فورد فيوزن + مازدا زووم 3 2007-2012",pos:"خلفي",year:"",import:"",code:"1475",price:10.75,brand:"WAK"},
+  {id:288,name:"خلفي مازدا زووم 6 2005+2008",pos:"خلفي",year:"",import:"",code:"1476",price:9.5,brand:"WAK"},
+  {id:289,name:"خلفي نيسان بانفايندر 4.0 لتر 2008-2012",pos:"خلفي",year:"",import:"",code:"1477",price:10.25,brand:"WAK"},
+  {id:290,name:"امامي مازدا بيك اب + فورد رانجر 2000-2004",pos:"امامي",year:"",import:"",code:"1479",price:10.25,brand:"WAK"},
+  {id:291,name:"امامي سونك 2010-2014",pos:"امامي",year:"",import:"",code:"1481",price:10.25,brand:"WAK"},
+  {id:292,name:"امامي مرزيه ديل اكسل 2014-2018",pos:"امامي",year:"",import:"",code:"1484",price:11.75,brand:"WAK"},
+  {id:293,name:"خلفي نيسان بترول 2002-2005",pos:"خلفي",year:"",import:"",code:"1492",price:9.5,brand:"WAK"},
+  {id:294,name:"امامي فورد اسكيب + كرفان 2008-2012",pos:"امامي",year:"",import:"",code:"1497",price:11.75,brand:"WAK"},
+  {id:295,name:"خلفي هيونداي ازيرا امريكا اللاتينية 2015-2016",pos:"خلفي",year:"",import:"",code:"1499",price:10.25,brand:"WAK"},
+  {id:296,name:"خلفي كروال 2020-2023",pos:"خلفي",year:"",import:"",code:"1501",price:10.0,brand:"WAK"},
+  {id:297,name:"امامي جارجر + اوباما 2007-2020",pos:"امامي",year:"",import:"",code:"1507",price:12.0,brand:"WAK"},
+  {id:298,name:"خلفي جارجر + اوباما + جالتنجير 2007-2020",pos:"خلفي",year:"",import:"",code:"1508",price:10.0,brand:"WAK"},
+  {id:299,name:"امامي جارجر 2019-2020 اوباما هيمي",pos:"امامي",year:"",import:"",code:"1509",price:13.5,brand:"WAK"},
+  {id:300,name:"امامي فورد توريس 2007-2014",pos:"امامي",year:"",import:"",code:"1510",price:12.5,brand:"WAK"},
+  {id:301,name:"امامي فورد اكسبلورا 2007-2014",pos:"امامي",year:"",import:"",code:"1511",price:10.25,brand:"WAK"},
+  {id:302,name:"خلفي جيب شيروكي 2008-2010",pos:"خلفي",year:"",import:"",code:"1512",price:10.75,brand:"WAK"},
+  {id:303,name:"خلفي نيسان بانفايندر + فرونتري 2020-2022",pos:"خلفي",year:"",import:"",code:"1513A",price:9.75,brand:"WAK"},
+  {id:304,name:"امامي سافيران 2013",pos:"امامي",year:"",import:"",code:"1516",price:12.5,brand:"WAK"},
+  {id:305,name:"امامي مرزيه تك اكسل 2011-2015",pos:"امامي",year:"",import:"",code:"1544",price:10.25,brand:"WAK"},
+  {id:306,name:"امامي هوندا جنزسي 2014-2018",pos:"امامي",year:"",import:"",code:"1547",price:12.75,brand:"WAK"},
+  {id:307,name:"امامي سازوكي 2014-2017",pos:"امامي",year:"",import:"",code:"1549",price:9.1,brand:"WAK"},
+  {id:308,name:"خلفي كراون مليكة 2000-2005",pos:"خلفي",year:"",import:"",code:"1554",price:8.0,brand:"WAK"},
+  {id:309,name:"خلفي سافانا + تاهو 2003-2019",pos:"خلفي",year:"",import:"",code:"1558",price:13.5,brand:"WAK"},
+  {id:310,name:"امامي تاهو 2006+2014",pos:"امامي",year:"",import:"",code:"1561",price:14.5,brand:"WAK"},
+  {id:311,name:"امامي جيب لاريدو 2011 + دوج دورانكو 2011",pos:"امامي",year:"",import:"",code:"1562",price:12.0,brand:"WAK"},
+  {id:312,name:"خلفي تاهو 2008-2018",pos:"خلفي",year:"",import:"",code:"1563",price:12.0,brand:"WAK"},
+  {id:313,name:"امامي نيسان سني هندي 2014",pos:"امامي",year:"",import:"",code:"1564",price:9.5,brand:"WAK"},
+  {id:314,name:"خلفي جارجير SRT 8 سلندر 2012-2019",pos:"خلفي",year:"",import:"",code:"1587",price:11.25,brand:"WAK"},
+  {id:315,name:"امامي مراج 2014-2019",pos:"امامي",year:"",import:"",code:"1593",price:10.25,brand:"WAK"},
+  {id:316,name:"امامي فورد رانجر 2005+2011",pos:"امامي",year:"",import:"",code:"1596",price:12.75,brand:"WAK"},
+  {id:317,name:"امامي نيسان بترول 2000+2005",pos:"امامي",year:"",import:"",code:"1599",price:11.75,brand:"WAK"},
+  {id:318,name:"امامي فورد ايدج 2011+2014",pos:"امامي",year:"",import:"",code:"1603",price:11.25,brand:"WAK"},
+  {id:319,name:"خلفي فورد ايدج 2011+2014",pos:"خلفي",year:"",import:"",code:"1604",price:9.75,brand:"WAK"},
+  {id:320,name:"امامي شوفرليت سلفرادو + سوبر بان 2500 2011+2019",pos:"امامي",year:"",import:"",code:"1615",price:16.0,brand:"WAK"},
+  {id:321,name:"امامي فورد اكسبلور - توريس 2015-2017",pos:"امامي",year:"",import:"",code:"1620",price:12.5,brand:"WAK"},
+  {id:322,name:"خلفي فورد توريس 2015-2020 + اكسبلورا",pos:"خلفي",year:"",import:"",code:"1621",price:10.25,brand:"WAK"},
+  {id:323,name:"امامي فورد F150 2014-2017",pos:"امامي",year:"",import:"",code:"1624",price:16.25,brand:"WAK"},
+  {id:324,name:"امامي مازدا بيك اب - فورد رانجر 2000+2005",pos:"امامي",year:"",import:"",code:"1628",price:11.0,brand:"WAK"},
+  {id:325,name:"امامي مازدا 6 2011+2014",pos:"امامي",year:"",import:"",code:"1631",price:11.75,brand:"WAK"},
+  {id:326,name:"امامي نيسان كوستر ايسوزي + دانيا 2001+2010",pos:"امامي",year:"",import:"",code:"1667",price:19.25,brand:"WAK"},
+  {id:327,name:"دوج دارت + C200 2014-2019 امامي كلايزر",pos:"امامي",year:"",import:"",code:"1671",price:10.25,brand:"WAK"},
+  {id:328,name:"امام سكودا 2015 حجم كبير مع الحساس + جيتا",pos:"امامي",year:"",import:"",code:"1678",price:13.0,brand:"WAK"},
+  {id:329,name:"امامي متسيوبو + اكنترا",pos:"امامي",year:"",import:"",code:"1682",price:12.25,brand:"WAK"},
+  {id:330,name:"امامي كرنافال + سيدونا 2015-2018",pos:"امامي",year:"",import:"",code:"1688A",price:13.5,brand:"WAK"},
+  {id:331,name:"امامي سورنتو 2016",pos:"امامي",year:"",import:"",code:"1690",price:12.25,brand:"WAK"},
+  {id:332,name:"خلفي سورنتو 2016",pos:"خلفي",year:"",import:"",code:"1691",price:9.0,brand:"WAK"},
+  {id:333,name:"امامي فورد اكسبلورا + فورد توريس 2009+2014",pos:"امامي",year:"",import:"",code:"1711",price:13.5,brand:"WAK"},
+  {id:334,name:"امامي نيسان مورانو 2018 + بانفايندر",pos:"امامي",year:"",import:"",code:"1713",price:12.5,brand:"WAK"},
+  {id:335,name:"امامي نيسان روج + الـتيما 2017-2022",pos:"امامي",year:"",import:"",code:"1714",price:11.75,brand:"WAK"},
+  {id:336,name:"امامي نيسان روج 2017",pos:"امامي",year:"",import:"",code:"1715",price:11.0,brand:"WAK"},
+  {id:337,name:"خلفي نيسان توريس + اكسبلورا + ادج 2012-2016",pos:"خلفي",year:"",import:"",code:"1717A",price:10.25,brand:"WAK"},
+  {id:338,name:"امامي مازدا 6 2014",pos:"امامي",year:"",import:"",code:"1728",price:11.5,brand:"WAK"},
+  {id:339,name:"امامي مازدا زووم 3 2014",pos:"امامي",year:"",import:"",code:"1729",price:11.25,brand:"WAK"},
+  {id:340,name:"خلفي مازدا 3 2014",pos:"خلفي",year:"",import:"",code:"1730",price:10.0,brand:"WAK"},
+  {id:341,name:"خلفي شانجان 3 2013-2018",pos:"خلفي",year:"",import:"",code:"1731",price:9.5,brand:"WAK"},
+  {id:342,name:"امامي شيري باندا 2008-2014",pos:"امامي",year:"",import:"",code:"1750",price:10.0,brand:"WAK"},
+  {id:343,name:"امامي جينيسز - كيا 900 2012+2014",pos:"امامي",year:"",import:"",code:"1756",price:12.75,brand:"WAK"},
+  {id:344,name:"امامي سانكيوتك 2010+2023",pos:"امامي",year:"",import:"",code:"1761",price:11.75,brand:"WAK"},
+  {id:345,name:"امامي النتيما 2018-2014",pos:"امامي",year:"",import:"",code:"1765",price:11.25,brand:"WAK"},
+  {id:346,name:"امامي پارس 2014-2020",pos:"امامي",year:"",import:"",code:"1780",price:9.75,brand:"WAK"},
+  {id:347,name:"امامي ترابلازير 2006",pos:"امامي",year:"",import:"",code:"1781",price:13.0,brand:"WAK"},
+  {id:348,name:"امامي شوفرليت ايكيونكس",pos:"امامي",year:"",import:"",code:"1782",price:11.25,brand:"WAK"},
+  {id:349,name:"خلفي بويك انكليف + شيفروليه شانة + تريل بلازر",pos:"خلفي",year:"",import:"",code:"1783",price:10.0,brand:"WAK"},
+  {id:350,name:"امامي MG + رينو تومبلر 2019+2023 3",pos:"امامي",year:"",import:"",code:"1787",price:11.25,brand:"WAK"},
+  {id:351,name:"امامي نيسان QX80 2011-2021",pos:"امامي",year:"",import:"",code:"1801",price:10.0,brand:"WAK"},
+  {id:352,name:"امامي هيونداي كريتا + سنتا امريكي 2018",pos:"امامي",year:"",import:"",code:"1833",price:10.5,brand:"WAK"},
+  {id:353,name:"امامي شوفرليت سبارك 2011-2015",pos:"امامي",year:"",import:"",code:"1837",price:11.0,brand:"WAK"},
+  {id:354,name:"امامي سوناتا 2016-2019",pos:"امامي",year:"",import:"",code:"1841",price:10.5,brand:"WAK"},
+  {id:355,name:"امامي النترا 2012-2019",pos:"امامي",year:"",import:"",code:"1842",price:11.25,brand:"WAK"},
+  {id:356,name:"امامي توكسون + سبورتاج 2017-2018",pos:"امامي",year:"",import:"",code:"1844",price:12.0,brand:"WAK"},
+  {id:357,name:"خلفي هيونداي توكسان 2016-2018",pos:"خلفي",year:"",import:"",code:"1845",price:8.5,brand:"WAK"},
+  {id:358,name:"خلفي سوناتا مثقب اوبتما 2010+2018",pos:"خلفي",year:"",import:"",code:"1846",price:8.75,brand:"WAK"},
+  {id:359,name:"امامي سوناتا خليجي كوري 2016-2020",pos:"امامي",year:"",import:"",code:"1847",price:11.25,brand:"WAK"},
+  {id:360,name:"امامي سوناتا مثقب 2017-2020",pos:"امامي",year:"",import:"",code:"1848",price:11.25,brand:"WAK"},
+  {id:361,name:"امامي توكسون + سبورتاج مثقب 2016-2019",pos:"امامي",year:"",import:"",code:"1849",price:11.25,brand:"WAK"},
+  {id:362,name:"امامي مرسيدس بنز M-CLASS 2015+2017",pos:"امامي",year:"",import:"",code:"1956",price:18.0,brand:"WAK"},
+  {id:363,name:"امامي يارس امريكي جديد + كيكس + فيرسا 2018-2022",pos:"امامي",year:"",import:"",code:"1974",price:10.25,brand:"WAK"},
+  {id:364,name:"امامي ماليبو 2016-2020 + ايكينوكس 2018+2019",pos:"امامي",year:"",import:"",code:"1981",price:11.5,brand:"WAK"},
+  {id:365,name:"امامي كيا بيكانتو 2018-2011",pos:"امامي",year:"",import:"",code:"1982",price:9.75,brand:"WAK"},
+  {id:366,name:"امامي كيا بيكانتو 2017-2011",pos:"امامي",year:"",import:"",code:"1983",price:11.75,brand:"WAK"},
+  {id:367,name:"ازيرا + كراندجر 2 + كيا ستنكر 2023 K7",pos:"امامي",year:"",import:"",code:"1986",price:12.25,brand:"WAK"},
+  {id:368,name:"خلفي كيا كادينزا ازيرا + كراندجر + K7 2023",pos:"خلفي",year:"",import:"",code:"1987",price:10.75,brand:"WAK"},
+  {id:369,name:"امامي CTS V (2009-2013) + SRT جيب جراند شيروكي (2014)",pos:"امامي",year:"",import:"",code:"1990",price:17.75,brand:"WAK"},
+  {id:370,name:"خلفي جيتا + ام جي + ام جي جيب 65 2019-2020",pos:"خلفي",year:"",import:"",code:"1998",price:10.75,brand:"WAK"},
+  {id:371,name:"امامي ايسوزو بيك اب 1988-1995",pos:"امامي",year:"",import:"",code:"2010",price:9.75,brand:"WAK"},
+  {id:372,name:"امامي مازدا فاسوليا 2000-2004",pos:"امامي",year:"",import:"",code:"2018",price:8.75,brand:"WAK"},
+  {id:373,name:"امامي مازدا 2002-1998",pos:"امامي",year:"",import:"",code:"2021",price:10.0,brand:"WAK"},
+  {id:374,name:"امامي اوبل فكترا ميغان 1993-1995",pos:"امامي",year:"",import:"",code:"2024",price:8.75,brand:"WAK"},
+  {id:375,name:"امامي سكودا مع حساس 2008+2012",pos:"امامي",year:"",import:"",code:"2025",price:11.5,brand:"WAK"},
+  {id:376,name:"امامي برادو + مرزيه دبل + عنكبوت 2016-2022",pos:"امامي",year:"",import:"",code:"2033",price:12.0,brand:"WAK"},
+  {id:377,name:"امامي LSX 350 دسك + اماي مليكة شاهان 2004-2015 + ليكزس",pos:"امامي",year:"",import:"",code:"2037",price:10.25,brand:"WAK"},
+  {id:378,name:"خلفي كامري 2002-2004",pos:"خلفي",year:"",import:"",code:"2038",price:7.75,brand:"WAK"},
+  {id:379,name:"امامي برادو + وه نه وشه 2008+2018",pos:"امامي",year:"",import:"",code:"2040",price:9.75,brand:"WAK"},
+  {id:380,name:"خلفي كامري 2002-2004",pos:"خلفي",year:"",import:"",code:"2042",price:8.25,brand:"WAK"},
+  {id:381,name:"خلفي كامري بيكاشو 2004-2005",pos:"خلفي",year:"",import:"",code:"2044",price:8.0,brand:"WAK"},
+  {id:382,name:"امامي بيجو 307 فرنسي 2007-2010",pos:"امامي",year:"",import:"",code:"2073",price:11.0,brand:"WAK"},
+  {id:383,name:"امامي باجيرو عنكبوت 2007-2014",pos:"امامي",year:"",import:"",code:"2075",price:11.25,brand:"WAK"},
+  {id:384,name:"خلفي باجيرو عنكبوت 2007-2014",pos:"خلفي",year:"",import:"",code:"2076",price:9.5,brand:"WAK"},
+  {id:385,name:"امامي هايس باص 2010-2018",pos:"امامي",year:"",import:"",code:"2077",price:10.25,brand:"WAK"},
+  {id:386,name:"امامي نيسان فرونتير 6 سلندر 2003-2004 + نيسان اكستريا",pos:"امامي",year:"",import:"",code:"2078",price:12.25,brand:"WAK"},
+  {id:387,name:"امامي امريكا 2008-2018",pos:"امامي",year:"",import:"",code:"2080",price:10.75,brand:"WAK"},
+  {id:388,name:"خلفي امريكا 2008-2018",pos:"خلفي",year:"",import:"",code:"2081",price:8.5,brand:"WAK"},
+  {id:389,name:"خلفي كراون ملكة 2006-2015",pos:"خلفي",year:"",import:"",code:"2083",price:8.0,brand:"WAK"},
+  {id:390,name:"امامي فيرسا حديث 2007-2014",pos:"امامي",year:"",import:"",code:"2084",price:10.5,brand:"WAK"},
+  {id:391,name:"امامي نيسان سني + سوزوكي سويفت 1992 + التيزا",pos:"امامي",year:"",import:"",code:"2086",price:8.5,brand:"WAK"},
+  {id:392,name:"امامي دير بيك اب حديث 2015-2021",pos:"امامي",year:"",import:"",code:"2088",price:13.0,brand:"WAK"},
+  {id:393,name:"خلفي دير بيك اب حديث 2015-2022",pos:"خلفي",year:"",import:"",code:"2089",price:8.5,brand:"WAK"},
+  {id:394,name:"خلفي فورد فوكس + اسكيب + جاكوار + مازدا زووم 3 2012-2016",pos:"خلفي",year:"",import:"",code:"2091",price:10.25,brand:"WAK"},
+  {id:395,name:"امامي شيري كوين 2011-2014",pos:"امامي",year:"",import:"",code:"2092",price:9.5,brand:"WAK"},
+  {id:396,name:"امامي كرولا 2010-2018",pos:"امامي",year:"",import:"",code:"2093",price:10.0,brand:"WAK"},
+  {id:397,name:"خلفي كرولا 2010-2018",pos:"خلفي",year:"",import:"",code:"2094",price:8.5,brand:"WAK"},
+  {id:398,name:"امامي باصات + سكودا + جيتا + اودي + هافال حديث",pos:"امامي",year:"",import:"",code:"2098",price:14.0,brand:"WAK"},
+  {id:399,name:"جيتا F7 + 2019-2011 + خلفي باصات + هافال + اودي + سكودا 2018",pos:"امامي",year:"",import:"",code:"2099",price:10.5,brand:"WAK"},
+  {id:400,name:"امامي باصات + جيتا + سكودا توربو + ام جي 2023-2020 6",pos:"امامي",year:"",import:"",code:"2101-F",price:13.0,brand:"WAK"},
+  {id:401,name:"خلفي شوفرليت امبالا 2005-2010",pos:"خلفي",year:"",import:"",code:"2102-R",price:8.5,brand:"WAK"},
+  {id:402,name:"امامي رانج روفر + MG-ZT 1999+2006",pos:"امامي",year:"",import:"",code:"2109F",price:12.5,brand:"WAK"},
+  {id:403,name:"خلفي لانسر قرش + جيب باتريوت 2011-2014",pos:"خلفي",year:"",import:"",code:"2111",price:9.0,brand:"WAK"},
+  {id:404,name:"امامي فورد فيستا + داهيتسو + مازدا زووم 2 2011-2014",pos:"امامي",year:"",import:"",code:"2113",price:10.75,brand:"WAK"},
+  {id:405,name:"هافال حديث 4282 + فورد ترينتوري 2023 + CR6 + امامي هوندا اكورا",pos:"امامي",year:"",import:"",code:"2115A",price:12.0,brand:"WAK"},
+  {id:406,name:"خلفي هوندا اكورد كروس تور FWD 2011-2014",pos:"خلفي",year:"",import:"",code:"2116",price:9.75,brand:"WAK"},
+  {id:407,name:"امامي رينو + سوزوكي ميغان 1998-2002 R",pos:"امامي",year:"",import:"",code:"2125",price:9.5,brand:"WAK"},
+  {id:408,name:"امامي شيري تيجو 7 2018-2016 + تيجو 8",pos:"امامي",year:"",import:"",code:"2126-F",price:12.5,brand:"WAK"},
+  {id:409,name:"خلفي شيري تيجو 7 2018-2016 + تيجو 8",pos:"خلفي",year:"",import:"",code:"2126R",price:8.0,brand:"WAK"},
+  {id:410,name:"امامي شيري تيكو A5 2019-2023",pos:"امامي",year:"",import:"",code:"2134",price:9.5,brand:"WAK"},
+  {id:411,name:"خلفي ماليبو حديث 2013-2017",pos:"خلفي",year:"",import:"",code:"2135",price:9.75,brand:"WAK"},
+  {id:412,name:"خلفي تويوتا هايلندر + افيزا 2005-2008",pos:"خلفي",year:"",import:"",code:"2136",price:9.25,brand:"WAK"},
+  {id:413,name:"امامي افلون حديث + هايلندر 2018-2023",pos:"امامي",year:"",import:"",code:"2137",price:13.0,brand:"WAK"},
+  {id:414,name:"امامي راف 4 حديث 2008-2011",pos:"امامي",year:"",import:"",code:"2138",price:11.25,brand:"WAK"},
+  {id:415,name:"امامي جيلي عالي R90 + 2008-2014",pos:"امامي",year:"",import:"",code:"2141",price:11.5,brand:"WAK"},
+  {id:416,name:"امامي BMW 1989+1995",pos:"امامي",year:"",import:"",code:"2167",price:8.75,brand:"WAK"},
+  {id:417,name:"كاديلاك ايسكاليك + GMC YUNIC 2021-2025 دسك + امامي تاهو",pos:"امامي",year:"",import:"",code:"2173",price:16.75,brand:"WAK"},
+  {id:418,name:"خلفي تاهو كاديلاك ايسكاليك + GMC YUNIC 2021-2025",pos:"خلفي",year:"",import:"",code:"2174",price:14.75,brand:"WAK"},
+  {id:419,name:"امامي شوفرليت كامارو 6 سلندر 2010-2015",pos:"امامي",year:"",import:"",code:"2175",price:12.5,brand:"WAK"},
+  {id:420,name:"امامي جيب شيروكي 2008-2012",pos:"امامي",year:"",import:"",code:"2181",price:12.25,brand:"WAK"},
+  {id:421,name:"امامي جيب نترو + دوج جوريني 2010 + دوج كرافان",pos:"امامي",year:"",import:"",code:"2185",price:11.75,brand:"WAK"},
+  {id:422,name:"خلفي دودج جوريني + جيب رانكلر 2012+2006",pos:"خلفي",year:"",import:"",code:"2186",price:9.75,brand:"WAK"},
+  {id:423,name:"امامي افيو 2014-2021",pos:"امامي",year:"",import:"",code:"2199",price:10.5,brand:"WAK"},
+  {id:424,name:"خلفي فولكس تورج",pos:"خلفي",year:"",import:"",code:"2232",price:10.75,brand:"WAK"},
+  {id:425,name:"امامي رنجروفر 2006-2009",pos:"امامي",year:"",import:"",code:"2235",price:15.0,brand:"WAK"},
+  {id:426,name:"امامي شيري 5 2013 + 4 ارزيو + ايسوزو",pos:"امامي",year:"",import:"",code:"2241",price:11.25,brand:"WAK"},
+  {id:427,name:"امامي شوفرليت ترابلايزر 2013-2016 + ايسوزو",pos:"امامي",year:"",import:"",code:"2248",price:10.75,brand:"WAK"},
+  {id:428,name:"مع حساس + سكودا CC 2014+2009 + Q3 دسك + خلفي اودي",pos:"امامي",year:"",import:"",code:"2263",price:11.75,brand:"WAK"},
+  {id:429,name:"امامي Q3 2009+2014 + فيكو + تكوان + اودي",pos:"امامي",year:"",import:"",code:"2264",price:13.25,brand:"WAK"},
+  {id:430,name:"امامي شانجان ببيكا 2018-2024",pos:"امامي",year:"",import:"",code:"2265",price:12.25,brand:"WAK"},
+  {id:431,name:"امامي مارسيديس بنز C300+C250+E-CLASS 2008-2014",pos:"امامي",year:"",import:"",code:"2284",price:13.0,brand:"WAK"},
+  {id:432,name:"امامي مارسيديس بنز E250-C250 2012-2016 + A5+A3+A1+QF اودي",pos:"امامي",year:"",import:"",code:"2292",price:18.25,brand:"WAK"},
+  {id:433,name:"امامي فيات مولتيپلا 2010-1999 + الفا روميو 147",pos:"امامي",year:"",import:"",code:"2294A",price:12.0,brand:"WAK"},
+  {id:434,name:"خلفي جاك GS5 2011 + GS5 2012",pos:"خلفي",year:"",import:"",code:"2295",price:9.75,brand:"WAK"},
+  {id:435,name:"خلفي سكودا A3 2013+2015 + اوكتافيا + اودي",pos:"خلفي",year:"",import:"",code:"2314",price:10.75,brand:"WAK"},
+  {id:436,name:"امامي A6 + A8 2011-2017",pos:"امامي",year:"",import:"",code:"2317",price:10.5,brand:"WAK"},
+  {id:437,name:"امامي كريت وول H2 + 2020 هفال 2019",pos:"امامي",year:"",import:"",code:"2318",price:12.5,brand:"WAK"},
+  {id:438,name:"خلفي شانجان 2018",pos:"خلفي",year:"",import:"",code:"2357",price:10.25,brand:"WAK"},
+  {id:439,name:"خلفي صيني",pos:"خلفي",year:"",import:"",code:"2413",price:9.5,brand:"WAK"},
+  {id:440,name:"امامي جيلي 2024",pos:"امامي",year:"",import:"",code:"2435",price:11.0,brand:"WAK"},
+  {id:441,name:"امامي صيني RUI YI 2009 مازدا فاو 6 + X80,B90,B70 2006-2014",pos:"امامي",year:"",import:"",code:"2449",price:11.0,brand:"WAK"},
+  {id:442,name:"خلفي كريت وال 2020-2024",pos:"خلفي",year:"",import:"",code:"2461",price:9.0,brand:"WAK"},
+  {id:443,name:"امامي ام جي 2000 MG 2022-2023",pos:"امامي",year:"",import:"",code:"2473",price:12.5,brand:"WAK"},
+  {id:444,name:"امامي جاك فاين s3 2008-2014",pos:"امامي",year:"",import:"",code:"2480",price:11.25,brand:"WAK"},
+  {id:445,name:"فورد تاراكو 2023-2024",pos:"امامي",year:"",import:"",code:"2496B",price:12.75,brand:"WAK"},
+  {id:446,name:"جاك بيكاب 2020+2020 GS4 دسك + امامي جاك",pos:"امامي",year:"",import:"",code:"2502",price:11.5,brand:"WAK"},
+  {id:447,name:"امامي كريت وول H9 2016-2020",pos:"امامي",year:"",import:"",code:"2510",price:11.75,brand:"WAK"},
+  {id:448,name:"خلفي جريت وول هافال 2020-2016",pos:"خلفي",year:"",import:"",code:"2511",price:12.5,brand:"WAK"},
+  {id:449,name:"امامي كريت وول H6 2018-2020",pos:"امامي",year:"",import:"",code:"2541",price:13.5,brand:"WAK"},
+  {id:450,name:"امامي شانجان GS75 2018+GS85 2017+CX95 2019-2022",pos:"امامي",year:"",import:"",code:"2543",price:12.5,brand:"WAK"},
+  {id:451,name:"امامي شانجان 7 2020-2023",pos:"امامي",year:"",import:"",code:"2545",price:10.5,brand:"WAK"},
+  {id:452,name:"امامي شانجان بيكاب SC55 2018-2020 + 2025",pos:"امامي",year:"",import:"",code:"2547",price:11.0,brand:"WAK"},
+  {id:453,name:"امامي جيلي اوكفانكو 2021-2024",pos:"امامي",year:"",import:"",code:"2552",price:12.0,brand:"WAK"},
+  {id:454,name:"خلفي جيلي اوكفانكو 2021-2024",pos:"خلفي",year:"",import:"",code:"2554",price:10.0,brand:"WAK"},
+  {id:455,name:"امامي شيري 7 بلس تيجو 2021-2024",pos:"امامي",year:"",import:"",code:"2556",price:10.0,brand:"WAK"},
+  {id:456,name:"خلفي جيلي GSB 2008+2010+GAK",pos:"خلفي",year:"",import:"",code:"2562A",price:9.75,brand:"WAK"},
+  {id:457,name:"خلفي جيرون + بيجو + وينسرت 2018-2019 301 + سيترون",pos:"خلفي",year:"",import:"",code:"2573",price:11.0,brand:"WAK"},
+  {id:458,name:"امامي شنجا GS75 R90 + 2022-2018",pos:"امامي",year:"",import:"",code:"2575",price:12.25,brand:"WAK"},
+  {id:459,name:"امامي رينو + شوفليت 2015-2014",pos:"امامي",year:"",import:"",code:"2577",price:12.75,brand:"WAK"},
+  {id:460,name:"امامي BYD + G5 2014-2020",pos:"امامي",year:"",import:"",code:"2580",price:11.25,brand:"WAK"},
+  {id:461,name:"امامي MG HS 2019+2025",pos:"امامي",year:"",import:"",code:"2594",price:11.75,brand:"WAK"},
+  {id:462,name:"امامي MG GT 2014+2017+ZS+MG2021",pos:"امامي",year:"",import:"",code:"2596",price:12.5,brand:"WAK"},
+  {id:463,name:"امامي MG AZS 2017-2021",pos:"امامي",year:"",import:"",code:"2599A",price:11.75,brand:"WAK"},
+  {id:464,name:"خلفي شانجان CS55 2020-2024",pos:"خلفي",year:"",import:"",code:"2604",price:10.5,brand:"WAK"},
+  {id:465,name:"امامي دونغفنغ/دونفيك 2021-2023",pos:"امامي",year:"",import:"",code:"2605",price:11.75,brand:"WAK"},
+  {id:466,name:"خلفي جيلي حديث ستروين 2019-2034",pos:"خلفي",year:"",import:"",code:"2612",price:10.0,brand:"WAK"},
+  {id:467,name:"خلفي كريت وول H4+H6+F5 2017+2020 + هافال",pos:"خلفي",year:"",import:"",code:"2615",price:10.25,brand:"WAK"},
+  {id:468,name:"امامي تشانجان دونفينك M60 + مني باس 2021-2024",pos:"امامي",year:"",import:"",code:"2618",price:12.5,brand:"WAK"},
+  {id:469,name:"خلفي شانجان CX70 2022-2014",pos:"خلفي",year:"",import:"",code:"2685",price:10.25,brand:"WAK"},
+  {id:470,name:"امامي شانجان",pos:"امامي",year:"",import:"",code:"2688",price:11.25,brand:"WAK"},
+  {id:471,name:"امامي جاك + تيتوري + تيتوري 2015+2023",pos:"امامي",year:"",import:"",code:"2690",price:11.75,brand:"WAK"},
+  {id:472,name:"خلفي شانجان بيك اب PA0 2019+2024 + كريت وول",pos:"خلفي",year:"",import:"",code:"2692",price:10.25,brand:"WAK"},
+  {id:473,name:"امامي جاك بيكاب 2022-2025",pos:"امامي",year:"",import:"",code:"2704",price:12.25,brand:"WAK"},
+  {id:474,name:"خلفي جاك بيكاب 2022-2026",pos:"خلفي",year:"",import:"",code:"2705",price:10.0,brand:"WAK"},
+  {id:475,name:"خلفي شانجان H5+H9 2010+2019 + تانك 300 + هافال",pos:"خلفي",year:"",import:"",code:"2748",price:10.75,brand:"WAK"},
+  {id:476,name:"امامي شانجان GS55 2024-2019",pos:"امامي",year:"",import:"",code:"2749",price:11.0,brand:"WAK"},
+  {id:477,name:"امامي بويك + شيفروليه + ئونكيس 2020",pos:"امامي",year:"",import:"",code:"2759",price:12.0,brand:"WAK"},
+  {id:478,name:"امامي هفال WEY F5,H4,H6 + Iev7 2019-2023 + جاك",pos:"امامي",year:"",import:"",code:"2761",price:13.0,brand:"WAK"},
+  {id:479,name:"امامي سينترا 2020-2024",pos:"امامي",year:"",import:"",code:"2772",price:11.5,brand:"WAK"},
+  {id:480,name:"خلفي فيرسا كيكس 2021-2023",pos:"خلفي",year:"",import:"",code:"2773",price:9.0,brand:"WAK"},
+  {id:481,name:"امامي H9 2019 فاو هونكي",pos:"امامي",year:"",import:"",code:"2795",price:12.5,brand:"WAK"},
+  {id:482,name:"تانكي GWM 2021 300 + امامي شانكشينك + كريت وال",pos:"امامي",year:"",import:"",code:"2800",price:12.0,brand:"WAK"},
+  {id:483,name:"امامي تويوتا الترزا 2005-1999",pos:"امامي",year:"",import:"",code:"2806",price:11.0,brand:"WAK"},
+  {id:484,name:"امامي كابتيفا + شانجان حديث SWM G05,X7 2016-2020",pos:"امامي",year:"",import:"",code:"2808",price:9.75,brand:"WAK"},
+  {id:485,name:"امامي كابتيفا + GAC 2010+2020",pos:"امامي",year:"",import:"",code:"2809",price:12.0,brand:"WAK"},
+  {id:486,name:"خلفي جاك + كوي4 GS4 + GAC 2021-2023",pos:"خلفي",year:"",import:"",code:"2812",price:9.0,brand:"WAK"},
+  {id:487,name:"امامي تيسلا 3 2020+2024",pos:"امامي",year:"",import:"",code:"2824",price:16.5,brand:"WAK"},
+  {id:488,name:"خلفي تيسلا 3 2020+2024",pos:"خلفي",year:"",import:"",code:"2825",price:13.0,brand:"WAK"},
+  {id:489,name:"امامي سايك + ماكسوس 2020+2022",pos:"امامي",year:"",import:"",code:"2826",price:10.75,brand:"WAK"},
+  {id:490,name:"خلفي جيري + جيري تيكو 4,5,7,8 2018",pos:"خلفي",year:"",import:"",code:"2834",price:9.25,brand:"WAK"},
+  {id:491,name:"امامي جريت وول H6 20 دسك 2011-2016",pos:"امامي",year:"",import:"",code:"2835",price:12.5,brand:"WAK"},
+  {id:492,name:"امامي بويك 2019",pos:"امامي",year:"",import:"",code:"2840",price:10.0,brand:"WAK"},
+  {id:493,name:"خلفي كاديلاك ترافيرس GMC-2024-2018 اكاديا XT5,6",pos:"خلفي",year:"",import:"",code:"2843",price:11.0,brand:"WAK"},
+  {id:494,name:"امامي كريت وال + اورا + اورار 1 + اورا ار 2",pos:"امامي",year:"",import:"",code:"2847",price:10.25,brand:"WAK"},
+  {id:495,name:"خلفي كريت وال + اورا ار 1 + اورا ار 2",pos:"خلفي",year:"",import:"",code:"2848",price:8.75,brand:"WAK"},
+  {id:496,name:"خلفي GAC AION S,V 2019-2020",pos:"خلفي",year:"",import:"",code:"2850",price:10.0,brand:"WAK"},
+  {id:497,name:"امامي شانجان بيك اب 2022-2025",pos:"امامي",year:"",import:"",code:"2854",price:14.0,brand:"WAK"},
+  {id:498,name:"امامي شانجان C95 2022-2025",pos:"امامي",year:"",import:"",code:"2863",price:13.0,brand:"WAK"},
+  {id:499,name:"خلفي دونكفينك + يوليوس 2019-2023",pos:"خلفي",year:"",import:"",code:"2864",price:11.75,brand:"WAK"},
+  {id:500,name:"امامي فاو",pos:"امامي",year:"",import:"",code:"2867",price:12.0,brand:"WAK"},
+  {id:501,name:"امامي نيو + رنجروفر فوكر EC6 2013+2017",pos:"امامي",year:"",import:"",code:"2874",price:14.5,brand:"WAK"},
+  {id:502,name:"خلفي دونك فينك 2022",pos:"خلفي",year:"",import:"",code:"2884",price:10.0,brand:"WAK"},
+  {id:503,name:"امامي GMC 2023 + ماليبو 2021-2022+2023 + ايكونوكس",pos:"امامي",year:"",import:"",code:"2917",price:12.5,brand:"WAK"},
+  {id:504,name:"امامي هافال جريت وول جوليون 2021-2024 فريت",pos:"امامي",year:"",import:"",code:"2932",price:12.0,brand:"WAK"},
+  {id:505,name:"خلفي هافال جريت وول جوليون 2021-2024",pos:"خلفي",year:"",import:"",code:"2933",price:11.75,brand:"WAK"},
+  {id:506,name:"خلفي مرسيديس بنز C300 2015",pos:"خلفي",year:"",import:"",code:"4002",price:11.75,brand:"WAK"},
+  {id:507,name:"امامي جيب كومباس - رينيكد 2017-2020",pos:"امامي",year:"",import:"",code:"4006",price:12.0,brand:"WAK"},
+  {id:508,name:"امامي جيب شيروكي بزون 2014-2021",pos:"امامي",year:"",import:"",code:"4008A",price:15.25,brand:"WAK"},
+  {id:509,name:"امامي كروز 2016-2020",pos:"امامي",year:"",import:"",code:"4009",price:11.75,brand:"WAK"},
+  {id:510,name:"امامي فورد ايدج 2021-2022",pos:"امامي",year:"",import:"",code:"4012",price:18.25,brand:"WAK"},
+  {id:511,name:"جيب شيروكي - C200 2015-2023-2021 امامي",pos:"امامي",year:"",import:"",code:"4020",price:11.5,brand:"WAK"},
+  {id:512,name:"امامي فورد فيوزن 2014-2020",pos:"امامي",year:"",import:"",code:"4021",price:11.75,brand:"WAK"},
+  {id:513,name:"امامي هوتا 2006+2014",pos:"امامي",year:"",import:"",code:"4027",price:15.0,brand:"WAK"},
+  {id:514,name:"امامي هونداي H350 2015 دسك",pos:"امامي",year:"",import:"",code:"4037",price:13.0,brand:"WAK"},
+  {id:515,name:"امامي MG ZS + رينو سنبل 2020",pos:"امامي",year:"",import:"",code:"4054",price:11.5,brand:"WAK"},
+  {id:516,name:"امامي فورد إكسبيديشن + F150 2010-2020",pos:"امامي",year:"",import:"",code:"4056",price:16.5,brand:"WAK"},
+  {id:517,name:"خلفي فورد موستانك 2015-2019",pos:"خلفي",year:"",import:"",code:"4068",price:11.25,brand:"WAK"},
+  {id:518,name:"خلفي جاكور 2016-2020",pos:"خلفي",year:"",import:"",code:"4069",price:11.75,brand:"WAK"},
+  {id:519,name:"خلفي مازدا 6 2014-2020",pos:"خلفي",year:"",import:"",code:"4070",price:10.5,brand:"WAK"},
+  {id:520,name:"امامي نافارا 2016-2024",pos:"امامي",year:"",import:"",code:"4080",price:12.0,brand:"WAK"},
+  {id:521,name:"امامي دورنكو 2021-2023",pos:"امامي",year:"",import:"",code:"4087",price:15.25,brand:"WAK"},
+  {id:522,name:"خلفي دورنكو 2021-2023",pos:"خلفي",year:"",import:"",code:"4088",price:12.75,brand:"WAK"},
+  {id:523,name:"امامي نيسان باترول 2012-2023 + بريفان",pos:"امامي",year:"",import:"",code:"4090",price:13.0,brand:"WAK"},
+  {id:524,name:"خلفي كامري + كرولا كروز 2018-2025",pos:"خلفي",year:"",import:"",code:"4091",price:9.5,brand:"WAK"},
+  {id:525,name:"خلفي دوج رام 2500",pos:"خلفي",year:"",import:"",code:"4097",price:15.25,brand:"WAK"},
+  {id:526,name:"امامي هيونداي كونا + سيراتو مثقب 2018+",pos:"امامي",year:"",import:"",code:"4098",price:11.75,brand:"WAK"},
+  {id:527,name:"امامي جيب لاريدو 2011+2021",pos:"امامي",year:"",import:"",code:"4103",price:15.0,brand:"WAK"},
+  {id:528,name:"اكاديا GMC 2022-2017 دسك + امامي",pos:"امامي",year:"",import:"",code:"4110",price:14.25,brand:"WAK"},
+  {id:529,name:"ترافيرس GMC-2024-2018 اكاديا XT5,6 + خلفي كاديلاك",pos:"خلفي",year:"",import:"",code:"4116",price:11.75,brand:"WAK"},
+  {id:530,name:"امامي اودي A6+A8+Q7 2019-2021",pos:"امامي",year:"",import:"",code:"4117",price:16.5,brand:"WAK"},
+  {id:531,name:"خلفي ماليبو - كروز 2018 + ايكينوكس 2018-2020",pos:"خلفي",year:"",import:"",code:"4118",price:10.25,brand:"WAK"},
+  {id:532,name:"امامي هافال جوليون دفع رباعي 2020",pos:"امامي",year:"",import:"",code:"4119",price:12.0,brand:"WAK"},
+  {id:533,name:"امامي مازدا زووم 3 2024",pos:"امامي",year:"",import:"",code:"4123",price:10.75,brand:"WAK"},
+  {id:534,name:"خلفي لكزس + افلون 2009-2015",pos:"خلفي",year:"",import:"",code:"4131",price:10.5,brand:"WAK"},
+  {id:535,name:"خلفي نيسان اكسترا + روج + شقاقا 4WD 2021-2025",pos:"خلفي",year:"",import:"",code:"4140",price:10.25,brand:"WAK"},
+  {id:536,name:"خلفي تويوتا فيرسو + افي 2008-2014",pos:"خلفي",year:"",import:"",code:"4142",price:10.0,brand:"WAK"},
+  {id:537,name:"بيجو + تويوتا خلفي 2016-2019",pos:"خلفي",year:"",import:"",code:"4149",price:10.5,brand:"WAK"},
+  {id:538,name:"امامي مارسيديس بنز 2021-2020",pos:"امامي",year:"",import:"",code:"4155",price:12.5,brand:"WAK"},
+  {id:539,name:"خلفي نيسان فارسيا 2002-2010",pos:"خلفي",year:"",import:"",code:"4157",price:10.0,brand:"WAK"},
+  {id:540,name:"خلفي جيب شيروكي + فورد + كرايزلر + ميركوري 2001-2008",pos:"خلفي",year:"",import:"",code:"4167",price:11.25,brand:"WAK"},
+  {id:541,name:"خلفي دودج رام + دورينكو 2004-2011",pos:"خلفي",year:"",import:"",code:"4169",price:11.0,brand:"WAK"},
+  {id:542,name:"خلفي فورد فيوزن 2014-2020",pos:"خلفي",year:"",import:"",code:"4171",price:10.25,brand:"WAK"},
+  {id:543,name:"خلفي جيب لاريدو + شيروكو + كراند قصير 2014-2021",pos:"خلفي",year:"",import:"",code:"4198",price:10.0,brand:"WAK"},
+  {id:544,name:"امامي تويوتا C-HR 2016-2018",pos:"امامي",year:"",import:"",code:"4213",price:11.75,brand:"WAK"},
+  {id:545,name:"امامي تاك اكسل 2016-2025",pos:"امامي",year:"",import:"",code:"4243",price:11.5,brand:"WAK"},
+  {id:546,name:"امامي مرزية اكسل تاك 2015-2021",pos:"امامي",year:"",import:"",code:"4251",price:14.0,brand:"WAK"},
+  {id:547,name:"امامي فورد ايدج + فوكس 2018-2022",pos:"امامي",year:"",import:"",code:"4263",price:10.5,brand:"WAK"},
+  {id:548,name:"امامي مرزية تك اكسل 2016-2025",pos:"امامي",year:"",import:"",code:"4264",price:12.0,brand:"WAK"},
+  {id:549,name:"امامي اطلس 2018-2024",pos:"امامي",year:"",import:"",code:"4265",price:15.25,brand:"WAK"},
+  {id:550,name:"امامي كامري 2018-2025 + كرولا كروز 2021-2025",pos:"امامي",year:"",import:"",code:"4275",price:12.25,brand:"WAK"},
+  {id:551,name:"امامي هوندا CR-V 2012-2015",pos:"امامي",year:"",import:"",code:"4282",price:12.0,brand:"WAK"},
+  {id:552,name:"خلفي رنكلر + كومباكس 2015-2021",pos:"خلفي",year:"",import:"",code:"4283",price:10.75,brand:"WAK"},
+  {id:553,name:"امامي كامارو 2016-2018",pos:"امامي",year:"",import:"",code:"4284",price:10.75,brand:"WAK"},
+  {id:554,name:"امامي ماليبو 2018-2024",pos:"امامي",year:"",import:"",code:"4285",price:12.25,brand:"WAK"},
+  {id:555,name:"خلفي جينا ام جي 5 + ام جي 6 2019-2020",pos:"خلفي",year:"",import:"",code:"4298",price:10.75,brand:"WAK"},
+  {id:556,name:"امامي فورد + لينكولن + اكسبلورا 2010-2014",pos:"امامي",year:"",import:"",code:"4307",price:11.0,brand:"WAK"},
+  {id:557,name:"امامي فورد اكسبلور 2008-2012",pos:"امامي",year:"",import:"",code:"4310",price:12.75,brand:"WAK"},
+  {id:558,name:"امامي مليكة شاهانه + كراند + كراون 2008+2020",pos:"امامي",year:"",import:"",code:"4314",price:11.5,brand:"WAK"},
+  {id:559,name:"حديث + فورت رنجة + فورد 2022+2024 GMC دسك + امامي",pos:"امامي",year:"",import:"",code:"4316",price:14.25,brand:"WAK"},
+  {id:560,name:"امامي دودج رام 2500 2011-2014",pos:"امامي",year:"",import:"",code:"4317",price:17.25,brand:"WAK"},
+  {id:561,name:"خلفي دودج رام 2500 2011-2014",pos:"خلفي",year:"",import:"",code:"4318",price:13.75,brand:"WAK"},
+  {id:562,name:"امامي + C200 دسك 2015-2017",pos:"امامي",year:"",import:"",code:"4322",price:12.25,brand:"WAK"},
+  {id:563,name:"امامي دوج كرفان 2012-2017",pos:"امامي",year:"",import:"",code:"4323",price:13.0,brand:"WAK"},
+  {id:564,name:"امامي كيا تيلو رايد - هونداي بالسايد 2019-2023",pos:"امامي",year:"",import:"",code:"4327",price:13.5,brand:"WAK"},
+  {id:565,name:"خلفي كيا تيلو رايد - هونداي بالسايد 2019-2023",pos:"خلفي",year:"",import:"",code:"4328",price:11.25,brand:"WAK"},
+  {id:566,name:"محرك 2.0 i3 2017 هونداي ستنكر",pos:"امامي",year:"",import:"",code:"4331",price:10.75,brand:"WAK"},
+  {id:567,name:"امامي سوناتا K5 + كيا اوبتيما 2021-2024",pos:"امامي",year:"",import:"",code:"4334",price:12.75,brand:"WAK"},
+  {id:568,name:"خلفي سوناتا K5 + كيا اوبتما 2021-2024",pos:"خلفي",year:"",import:"",code:"4335",price:10.5,brand:"WAK"},
+  {id:569,name:"خلفي نيسان التما + روج 2021-2025",pos:"خلفي",year:"",import:"",code:"4338",price:9.5,brand:"WAK"},
+  {id:570,name:"خلفي تويوتا روج + كرولا خليجي CHR 2020-2024",pos:"خلفي",year:"",import:"",code:"4339",price:9.5,brand:"WAK"},
+  {id:571,name:"امامي كرولا امريكي + هايبر 2020-2025",pos:"امامي",year:"",import:"",code:"4340",price:11.25,brand:"WAK"},
+  {id:572,name:"خلفي كرولا 2020-2023 + 1.8 هايلندر + لكزس + راف4",pos:"خلفي",year:"",import:"",code:"4341",price:9.5,brand:"WAK"},
+  {id:573,name:"امامي ميتسوبيشي كليبس 2020-2018",pos:"امامي",year:"",import:"",code:"4344",price:12.5,brand:"WAK"},
+  {id:574,name:"خلفي ميتسوبيشي كليبس 2018-2020",pos:"خلفي",year:"",import:"",code:"4350",price:10.25,brand:"WAK"},
+  {id:575,name:"خلفي ترابلايزر + كابتيفا + جيب + رنكلر + رام خلفي",pos:"خلفي",year:"",import:"",code:"4354",price:10.5,brand:"WAK"},
+  {id:576,name:"امامي تويوتا لكزس 1995+2004",pos:"امامي",year:"",import:"",code:"4359",price:11.5,brand:"WAK"},
+  {id:577,name:"امامي هايس 2019-2024",pos:"امامي",year:"",import:"",code:"4361",price:12.25,brand:"WAK"},
+  {id:578,name:"امامي كرولا خليجي SAS 2020-2025",pos:"امامي",year:"",import:"",code:"4368",price:11.25,brand:"WAK"},
+  {id:579,name:"امامي كيا سول Mpi 1.6 2019-2021",pos:"امامي",year:"",import:"",code:"4369",price:11.0,brand:"WAK"},
+  {id:580,name:"امامي كيا سول + كيا سونيت 2022+2023-2021",pos:"امامي",year:"",import:"",code:"4372",price:11.0,brand:"WAK"},
+  {id:581,name:"خلفي جيب الريدو - باب طويل 2022-2025 + رانجلر",pos:"خلفي",year:"",import:"",code:"4375",price:14.0,brand:"WAK"},
+  {id:582,name:"كانيون GMC 2015-2017 + دسك + امامي كولورادو",pos:"امامي",year:"",import:"",code:"4388",price:13.25,brand:"WAK"},
+  {id:583,name:"خلفي كانيون GMC 2015-2017 + دسك + كولورادو",pos:"خلفي",year:"",import:"",code:"4389",price:12.5,brand:"WAK"},
+  {id:584,name:"خلفي تاهو كاديلاك ايسكاليك GMC YUNIC 2021-2025",pos:"خلفي",year:"",import:"",code:"4395",price:14.0,brand:"WAK"},
+  {id:585,name:"امامي شوفرليت + برغي GMC 2020-2026",pos:"امامي",year:"",import:"",code:"4397",price:21.0,brand:"WAK"},
+  {id:586,name:"خلفي توكسن 2021-2025",pos:"خلفي",year:"",import:"",code:"4411",price:10.5,brand:"WAK"},
+  {id:587,name:"امامي سوزويك جيمني 2024-2018",pos:"امامي",year:"",import:"",code:"4426",price:10.5,brand:"WAK"},
+  {id:588,name:"خلفي دوج رانجير + برينكو 2020-2024",pos:"خلفي",year:"",import:"",code:"4430",price:11.75,brand:"WAK"},
+  {id:589,name:"امامي فورد اكسبورا سلندر 2021-2023",pos:"امامي",year:"",import:"",code:"4431",price:15.25,brand:"WAK"},
+  {id:590,name:"خلفي فورد اكسبلور سلندر 2021-2023",pos:"خلفي",year:"",import:"",code:"4432",price:13.5,brand:"WAK"},
+  {id:591,name:"خلفي فورد لينكولن + اكسبلورا سالندر 4 2019-2023",pos:"خلفي",year:"",import:"",code:"4433",price:11.75,brand:"WAK"},
+  {id:592,name:"خلفي فورد اكسبورا 2021-2023",pos:"خلفي",year:"",import:"",code:"4434",price:13.0,brand:"WAK"},
+  {id:593,name:"امامي كالتوركي + رانكلر 2020-2024",pos:"امامي",year:"",import:"",code:"4435",price:13.5,brand:"WAK"},
+  {id:594,name:"امامي هوندا اكورد 2018-2020",pos:"امامي",year:"",import:"",code:"4444",price:15.75,brand:"WAK"},
+  {id:595,name:"امامي فورد رنجر بيكاب 2011-2015",pos:"امامي",year:"",import:"",code:"4445",price:14.0,brand:"WAK"},
+  {id:596,name:"امامي كولف + جيتا 2019-2020 + CC + تكوان + باسات",pos:"امامي",year:"",import:"",code:"4450",price:12.75,brand:"WAK"},
+  {id:597,name:"خلفي سينترا 2021-2024",pos:"خلفي",year:"",import:"",code:"4451",price:9.5,brand:"WAK"},
+  {id:598,name:"امامي شوفرليت ترابلايزر 2021-2024",pos:"امامي",year:"",import:"",code:"4452",price:13.0,brand:"WAK"},
+  {id:599,name:"خلفي بويك انكليف 2022",pos:"خلفي",year:"",import:"",code:"4453",price:10.75,brand:"WAK"},
+  {id:600,name:"خلفي هونداي + كيا + تاسونا 2005-2010+2005-2011",pos:"خلفي",year:"",import:"",code:"4458",price:10.25,brand:"WAK"},
+  {id:601,name:"امامي النترا 2021-2024",pos:"امامي",year:"",import:"",code:"4461",price:12.0,brand:"WAK"},
+  {id:602,name:"خلفي النترا 2021-2024",pos:"خلفي",year:"",import:"",code:"4462",price:9.5,brand:"WAK"},
+  {id:603,name:"خلفي النترا 2019",pos:"خلفي",year:"",import:"",code:"4463",price:9.5,brand:"WAK"},
+  {id:604,name:"امامي سورينتو 2025-2021 + هونداي + كيا ستنكر 2024",pos:"امامي",year:"",import:"",code:"4464",price:13.5,brand:"WAK"},
+  {id:605,name:"خلفي سورينتو 2021-2024",pos:"خلفي",year:"",import:"",code:"4465",price:10.0,brand:"WAK"},
+  {id:606,name:"امامي هوندا GV80 + جنسس 2021-2024",pos:"امامي",year:"",import:"",code:"4467",price:12.25,brand:"WAK"},
+  {id:607,name:"خلفي هونداي ازيرا + صول + تاسونا 2009-2013+2010-2011",pos:"خلفي",year:"",import:"",code:"4469",price:10.25,brand:"WAK"},
+  {id:608,name:"خلفي اودي Q5+Q7+A9+A5 2015-2020",pos:"خلفي",year:"",import:"",code:"4474",price:11.5,brand:"WAK"},
+  {id:609,name:"امامي GMC 2022-2024 2.0 اكاديا",pos:"امامي",year:"",import:"",code:"4476",price:12.25,brand:"WAK"},
+  {id:610,name:"امامي تويوتا 2022-2025",pos:"امامي",year:"",import:"",code:"4479",price:12.0,brand:"WAK"},
+  {id:611,name:"خلفي تيسلا S 2010-2016 + X 2015-2023",pos:"خلفي",year:"",import:"",code:"4480",price:13.0,brand:"WAK"},
+  {id:612,name:"خلفي فورد F1500 2020-2025",pos:"خلفي",year:"",import:"",code:"4483",price:11.0,brand:"WAK"},
+  {id:613,name:"امامي كولورادو 2021-2025",pos:"امامي",year:"",import:"",code:"4486",price:12.0,brand:"WAK"},
+  {id:614,name:"اسوزو 1998-2000 + GMC+ 1999-2005 + امامي شوفرليت",pos:"امامي",year:"",import:"",code:"4487",price:13.5,brand:"WAK"},
+  {id:615,name:"امامي روج اكستريل 2021-2025",pos:"امامي",year:"",import:"",code:"4489",price:12.5,brand:"WAK"},
+  {id:616,name:"امامي هونداي i10 دسك 2015-2013",pos:"امامي",year:"",import:"",code:"4492",price:12.25,brand:"WAK"},
+  {id:617,name:"امامي كروز حديث + سونيك 2012-2025",pos:"امامي",year:"",import:"",code:"4493",price:12.0,brand:"WAK"},
+  {id:618,name:"امامي ج م سي + اكاديا 2021-2024",pos:"امامي",year:"",import:"",code:"4494",price:16.0,brand:"WAK"},
+  {id:619,name:"فولكس واكن يولو A1 2018+2025 دسك + امامي اودي",pos:"امامي",year:"",import:"",code:"4496",price:10.5,brand:"WAK"},
+  {id:620,name:"امامي كيا كرنفال حديث 2023-2024",pos:"امامي",year:"",import:"",code:"4500",price:13.5,brand:"WAK"},
+  {id:621,name:"خلفي رام 2019-2024",pos:"خلفي",year:"",import:"",code:"4501",price:11.75,brand:"WAK"},
+  {id:622,name:"خلفي هايس 2010-2024",pos:"خلفي",year:"",import:"",code:"4502",price:9.75,brand:"WAK"},
+  {id:623,name:"امامي فورد F-150 2021+2025",pos:"امامي",year:"",import:"",code:"4503",price:17.25,brand:"WAK"},
+  {id:624,name:"خلفي فورد F-150 2011-2019",pos:"خلفي",year:"",import:"",code:"4504A",price:11.75,brand:"WAK"},
+  {id:625,name:"امامي GMC YUNIC 2021-2025",pos:"امامي",year:"",import:"",code:"4506",price:16.25,brand:"WAK"},
+  {id:626,name:"امامي هونداي ستاريا 2021-2025",pos:"امامي",year:"",import:"",code:"4510",price:13.0,brand:"WAK"},
+  {id:627,name:"امامي هونداي ستاريا G80 2020+2025 + خلفي شانجان",pos:"امامي",year:"",import:"",code:"4511",price:11.0,brand:"WAK"},
+  {id:628,name:"امامي 2021-2025+2024",pos:"امامي",year:"",import:"",code:"4513",price:12.0,brand:"WAK"},
+  {id:629,name:"امامي GMC شوفرليت 2016-2023",pos:"امامي",year:"",import:"",code:"4517",price:11.25,brand:"WAK"},
+  {id:630,name:"امامي 2020-2023",pos:"امامي",year:"",import:"",code:"4520",price:13.0,brand:"WAK"},
+  {id:631,name:"امامي هافال H9-CX50 2016-2017",pos:"امامي",year:"",import:"",code:"4530",price:12.0,brand:"WAK"},
+  {id:632,name:"امامي 2020-2024",pos:"امامي",year:"",import:"",code:"4535",price:10.25,brand:"WAK"},
+  {id:633,name:"خلفي شوفرليت ماليبو - اكيونس 2016-2018",pos:"خلفي",year:"",import:"",code:"4536",price:10.5,brand:"WAK"},
+  {id:634,name:"خلفي كرولا خليجي XII 2020-2025",pos:"خلفي",year:"",import:"",code:"4537",price:9.0,brand:"WAK"},
+  {id:635,name:"امامي رانكلر توربو - رافور 2011-2023",pos:"امامي",year:"",import:"",code:"4545",price:13.5,brand:"WAK"},
+  {id:636,name:"اوتلاندر QX60 2020-2024-24 + امامي نيسان بانفايندر 22 + انفيني",pos:"امامي",year:"",import:"",code:"4547",price:15.5,brand:"WAK"},
+  {id:637,name:"امامي جيب لاريدو باب طويل 2022-2025",pos:"امامي",year:"",import:"",code:"4550",price:21.0,brand:"WAK"},
+  {id:638,name:"امامي لكزس GS350 2007-2011",pos:"امامي",year:"",import:"",code:"4552",price:12.75,brand:"WAK"},
+  {id:639,name:"خلفي فولكس واكن + كولف3 1993+مازدة 3 2004-2010",pos:"خلفي",year:"",import:"",code:"4553",price:11.75,brand:"WAK"},
+  {id:640,name:"امامي كولورادو + ترابلايزر 2021-2025",pos:"امامي",year:"",import:"",code:"4559",price:15.0,brand:"WAK"},
+  {id:641,name:"امامي تويوتا افانزا 2022-2025",pos:"امامي",year:"",import:"",code:"4574",price:11.25,brand:"WAK"},
+  {id:642,name:"امامي مازدا 626 1991",pos:"امامي",year:"",import:"",code:"7288",price:8.5,brand:"WAK"},
+  {id:643,name:"خلفي فورد روني 1993-1997",pos:"خلفي",year:"",import:"",code:"2867A",price:12.0,brand:"WAK"},
+  {id:644,name:"امامي متسوبويش كاتر فوسو + نيسان سيفيليان باص 2004-2017",pos:"امامي",year:"",import:"",code:"41060WK60J",price:17.5,brand:"WAK"},
+  {id:645,name:"خلفي لاندكروز مونيكا 2022-2025",pos:"خلفي",year:"",import:"",code:"6019/4039",price:11.5,brand:"WAK"},
+  {id:646,name:"امامي لاندكروز مونيكا 2022-2025",pos:"امامي",year:"",import:"",code:"6038/4040",price:14.75,brand:"WAK"},
+  {id:647,name:"امامي رانجروفر سبورت LS 2006-2010",pos:"امامي",year:"",import:"",code:"D1263",price:14.5,brand:"WAK"},
+  {id:648,name:"خلفي جيب رانكلر + جيب بيك اب D2186 2017-2025 7",pos:"خلفي",year:"",import:"",code:"D2186",price:10.0,brand:"WAK"},
+  {id:649,name:"خلفي فيرسا كيكس D2295-9531 2021",pos:"خلفي",year:"",import:"",code:"D2295-9531",price:9.5,brand:"WAK"},
+  {id:650,name:"خلفي اوبل فكترا KD7731 1989-1995",pos:"خلفي",year:"",import:"",code:"KD7731",price:5.75,brand:"WAK"},
+  {id:651,name:"امامي شانجان يوكسينك + شانجان حديث cs75 2019 CX182",pos:"امامي",year:"",import:"",code:"CX182",price:10.0,brand:"WAK"},
+
+];
+
+// ===== STATE =====
+const PIN = '1234';
+let pinInput = '';
+let currentFilter = 'all';
+let editId = null;
+
+function loadData() {
+  try {
+    const saved = localStorage.getItem('discData');
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed.length > 0 && (parsed[0].brand === 'ابكس رايس' || parsed.length < DEFAULT_DATA.length)) {
+        localStorage.removeItem('discData');
+        return [...DEFAULT_DATA];
+      }
+      return parsed;
+    }
+    return [...DEFAULT_DATA];
+  } catch { return [...DEFAULT_DATA]; }
+}
+
+function saveData(data) {
+  localStorage.setItem('discData', JSON.stringify(data));
+}
+
+let data = loadData();
+
+// Splash screen
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    const splash = document.getElementById('splashScreen');
+    if (splash) {
+      splash.style.opacity = '0';
+      setTimeout(() => splash.style.display = 'none', 500);
+    }
+    updateHomeStats();
+  }, 1500);
+});
+
+function updateHomeStats() {
+  const total = data.length;
+  let available = 0;
+  for (let i = 0; i < data.length; i++) {
+    const s = getStock(data[i].id);
+    if (s.available) available++;
+  }
+  const brands = new Set(data.map(d => d.brand)).size;
+  const s1 = document.getElementById('homeStat1');
+  const s2 = document.getElementById('homeStat2');
+  const s3 = document.getElementById('homeStat3');
+  if (s1) s1.textContent = total;
+  if (s2) s2.textContent = available;
+  if (s3) s3.textContent = brands;
+}
+
+// ===== PIN =====
+function pinPress(d) {
+  if (pinInput.length >= 4) return;
+  pinInput += d;
+  updatePinDots();
+  if (pinInput.length === 4) {
+    setTimeout(() => {
+      if (pinInput === PIN) {
+        document.getElementById('pinOverlay').classList.add('hidden');
+        renderAdminList();
+        updateStats();
+      } else {
+        document.getElementById('pinError').classList.add('show');
+        pinInput = '';
+        updatePinDots();
+        setTimeout(() => document.getElementById('pinError').classList.remove('show'), 1500);
+      }
+    }, 200);
+  }
+}
+
+function pinDel() {
+  pinInput = pinInput.slice(0, -1);
+  updatePinDots();
+}
+
+function updatePinDots() {
+  for (let i = 0; i < 4; i++) {
+    document.getElementById('d' + i).classList.toggle('filled', i < pinInput.length);
+  }
+}
+
+// ===== NAVIGATION =====
+function showPage(p) {
+  document.querySelectorAll('.page').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(x => x.classList.remove('active'));
+  document.getElementById(p + 'Page').classList.add('active');
+  document.getElementById('nav' + p.charAt(0).toUpperCase() + p.slice(1)).classList.add('active');
+}
+
+function goAdmin() {
+  showPage('admin');
+  document.getElementById('pinOverlay').classList.remove('hidden');
+  pinInput = '';
+  updatePinDots();
+}
+
+// ===== SEARCH =====
+function doSearch() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const wrap = document.getElementById('resultsWrap');
+
+  if (!q) {
+    wrap.innerHTML = '<div class="no-result"><div class="no-icon">🔍</div><p>اكتب اسم السيارة أو رقم الدسك</p></div>';
+    return;
+  }
+
+  let results = data.filter(d => {
+    const nameMatch = d.name.toLowerCase().includes(q);
+    const codeMatch = d.code.toLowerCase().includes(q);
+    if (!nameMatch && !codeMatch) return false;
+    if (currentFilter === 'all') return true;
+    if (currentFilter === 'امامي') return d.pos === 'امامي';
+    if (currentFilter === 'خلفي') return d.pos === 'خلفي';
+    if (currentFilter === 'خليجي') return d.import === 'خليجي';
+    if (currentFilter === 'أمريكي') return d.import === 'أمريكي';
+    return true;
+  });
+
+  if (!results.length) {
+    wrap.innerHTML = '<div class="no-result"><div class="no-icon">😔</div><p>لا توجد نتائج لـ "' + q + '"</p></div>';
+    return;
+  }
+
+  wrap.innerHTML = '<div class="results-label">' + results.length + ' نتيجة</div>' +
+    results.map((d,i) => discCard(d,i)).join('');
+}
+
+function discCard(d, index) {
+  const isBack = d.pos === 'خلفي';
+  const yearType = [d.year, d.import].filter(Boolean).join(' — ');
+  return `
+    <div class="disc-card" style="animation-delay:${(index||0)*0.05}s">
+      <div class="disc-position ${isBack ? 'back' : ''}">${isBack ? '🔵 خلفي' : '🔴 أمامي'}</div>
+      <div class="disc-name">${d.name}</div>
+      ${yearType ? `<div class="disc-year-type">${d.year ? '<span>' + d.year + '</span>' : ''}${d.import ? '<span>' + d.import + '</span>' : ''}</div>` : ''}
+      <div class="disc-details">
+        <div class="disc-detail">
+          <div class="disc-detail-label">رقم الدسك</div>
+          <div class="disc-detail-value">${d.code}</div>
+        </div>
+        <div class="disc-detail">
+          <div class="disc-detail-label">السعر</div>
+          <div class="disc-detail-value price">${d.price.toFixed(2)} $</div>
+          <div style="font-size:11px; color:#6c7a89; margin-top:3px; font-weight:600">${Math.round(d.price * 155000).toLocaleString()} د.ع</div>
+        </div>
+        <div class="disc-detail" style="grid-column:1/-1">
+          <div class="disc-detail-label">الماركة</div>
+          <div class="disc-detail-value brand">${d.brand}</div>
+        </div>
+      </div>
+      <div style="margin-top:12px; display:flex; flex-direction:column; gap:8px;">
+        ${(() => {
+          const stock = getStock(d.id);
+          if (stock.available) {
+            return `<div class="stock-badge stock-available">✅ متوفر <span class="stock-qty">${stock.qty > 0 ? '· ' + stock.qty + ' قطعة' : ''}</span></div>`;
+          } else {
+            return `<div class="stock-badge stock-unavailable">❌ غير متوفر</div>`;
+          }
+        })()}
+        <button class="copy-btn" onclick="shareWhatsApp('${d.name}', '${d.year}', '${d.code}', '${d.pos}')">📲 مشاركة واتساب</button>
+      </div>
+    </div>`;
+}
+
+function setFilter(f, el) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-chip').forEach(x => x.classList.remove('active'));
+  el.classList.add('active');
+  doSearch();
+}
+
+// ===== STOCK SYSTEM =====
+function getStock(id) {
+  try {
+    const s = localStorage.getItem('stock_' + id);
+    return s ? JSON.parse(s) : { available: false, qty: 0 };
+  } catch { return { available: false, qty: 0 }; }
+}
+
+function toggleStock(id) {
+  const s = getStock(id);
+  s.available = !s.available;
+  if (!s.available) s.qty = 0;
+  localStorage.setItem('stock_' + id, JSON.stringify(s));
+  renderAdminList();
+  showToast(s.available ? '✅ تم تعيينه متوفر' : '❌ تم تعيينه غير متوفر');
+}
+
+function setQty(id, val) {
+  const s = getStock(id);
+  s.qty = parseInt(val) || 0;
+  localStorage.setItem('stock_' + id, JSON.stringify(s));
+  showToast('✅ تم حفظ الكمية');
+}
+
+function shareWhatsApp(name, year, code, pos) {
+  const yearText = year ? ' ' + year : '';
+  const msg = `🔴 *محل ابو علي الكظماوي*
+
+🚗 السيارة: ${name}${yearText}
+📍 الموضع: ${pos}
+🔢 رقم الدسك: ${code}`;
+  const url = 'https://wa.me/?text=' + encodeURIComponent(msg);
+  window.open(url, '_blank');
+}
+
+// ===== ADMIN =====
+function updateStats() {
+  document.getElementById('statTotal').textContent = data.length;
+  document.getElementById('statFront').textContent = data.filter(d => d.pos === 'امامي').length;
+  document.getElementById('statBack').textContent = data.filter(d => d.pos === 'خلفي').length;
+}
+
+function renderAdminList() {
+  const q = document.getElementById('adminSearch').value.toLowerCase();
+  const list = document.getElementById('adminList');
+  const filtered = q ? data.filter(d => d.name.toLowerCase().includes(q) || d.code.toLowerCase().includes(q)) : data;
+
+  if (!filtered.length) {
+    list.innerHTML = '<div class="no-result"><div class="no-icon">📭</div><p>لا توجد نتائج</p></div>';
+    return;
+  }
+
+  list.innerHTML = filtered.map(d => `
+    <div class="admin-item">
+      <div class="admin-item-info">
+        <div class="admin-item-name">${d.name} ${d.year || ''}</div>
+        <div class="admin-item-meta">${d.pos} ${d.import ? '· ' + d.import : ''} · ${d.price.toFixed(2)} $</div>
+      </div>
+      <div class="admin-item-code">${d.code.substring(0,12)}...</div>
+      <button class="copy-btn" style="position:static;margin:0" onclick="openEdit(${d.id})">✏️</button>
+      <button class="del-btn" onclick="delDisc(${d.id})">🗑️</button>
+    </div>
+    <div class="admin-stock-row">
+      ${(() => {
+        const stock = getStock(d.id);
+        return `
+          <button class="stock-toggle ${stock.available ? 'on' : 'off'}" onclick="toggleStock(${d.id})">${stock.available ? '✅ متوفر' : '❌ غير متوفر'}</button>
+          ${stock.available ? `<input class="stock-qty-input" type="number" min="0" value="${stock.qty}" placeholder="كمية" onchange="setQty(${d.id}, this.value)">` : ''}
+          <span style="font-size:11px;color:#888">${stock.available && stock.qty > 0 ? stock.qty + ' قطعة' : ''}</span>
+        `;
+      })()}
+    </div>
+  `).join('');
+}
+
+function addDisc() {
+  const name = document.getElementById('addName').value.trim();
+  const code = document.getElementById('addCode').value.trim();
+  const price = parseFloat(document.getElementById('addPrice').value);
+
+  if (!name || !code || isNaN(price)) {
+    showToast('⚠️ أكمل الحقول المطلوبة'); return;
+  }
+
+  const newId = data.length ? Math.max(...data.map(d => d.id)) + 1 : 1;
+  data.push({
+    id: newId,
+    name,
+    pos: document.getElementById('addPos').value,
+    year: document.getElementById('addYear').value.trim(),
+    import: document.getElementById('addImport').value,
+    code,
+    price,
+    brand: document.getElementById('addBrand').value.trim() || 'دوبل لينك'
+  });
+
+  saveData(data);
+  renderAdminList();
+  updateStats();
+  showToast('✅ تمت الإضافة بنجاح');
+
+  ['addName','addYear','addCode','addPrice'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('addImport').value = '';
+  document.getElementById('addPos').value = 'امامي';
+  document.getElementById('addBrand').value = 'دوبل لينك';
+}
+
+function delDisc(id) {
+  if (!confirm('هل تريد حذف هذا الدسك؟')) return;
+  data = data.filter(d => d.id !== id);
+  saveData(data);
+  renderAdminList();
+  updateStats();
+  showToast('🗑️ تم الحذف');
+}
+
+function openEdit(id) {
+  const d = data.find(x => x.id === id);
+  if (!d) return;
+  editId = id;
+  document.getElementById('editName').value = d.name;
+  document.getElementById('editYear').value = d.year;
+  document.getElementById('editImport').value = d.import;
+  document.getElementById('editCode').value = d.code;
+  document.getElementById('editPrice').value = d.price;
+  document.getElementById('editPos').value = d.pos;
+  document.getElementById('editModal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('editModal').classList.remove('open');
+  editId = null;
+}
+
+function saveEdit() {
+  const idx = data.findIndex(d => d.id === editId);
+  if (idx === -1) return;
+  data[idx] = {
+    ...data[idx],
+    name: document.getElementById('editName').value.trim(),
+    year: document.getElementById('editYear').value.trim(),
+    import: document.getElementById('editImport').value,
+    code: document.getElementById('editCode').value.trim(),
+    price: parseFloat(document.getElementById('editPrice').value),
+    pos: document.getElementById('editPos').value,
+  };
+  saveData(data);
+  closeModal();
+  renderAdminList();
+  updateStats();
+  showToast('✅ تم الحفظ');
+}
+
+// ===== TOAST =====
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// Init
+updateStats();
+</script>
+<script>
+// PWA Service Worker
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    const CACHE = 'abu-ali-v1';
+    self.addEventListener('install', e => {
+      e.waitUntil(
+        caches.open(CACHE).then(c => c.addAll(['./', './disc-lookup.html']))
+      );
+      self.skipWaiting();
+    });
+    self.addEventListener('activate', e => {
+      e.waitUntil(caches.keys().then(keys =>
+        Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+      ));
+      self.clients.claim();
+    });
+    self.addEventListener('fetch', e => {
+      e.respondWith(
+        caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match('./')))
+      );
+    });
+  `;
+  const blob = new Blob([swCode], {type: 'application/javascript'});
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(() => {});
+}
+</script>
+</body>
+</html>
